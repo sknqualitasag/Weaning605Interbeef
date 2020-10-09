@@ -64,34 +64,22 @@ void animalMap::inputData(string dataFile){
 
         animal *aPtr = new animal(indstr, traitname, acc); //Sophie
 
-//        if(rec%100000==0){
-//          cout<<rec<<" records processed \r";
-//          cout.flush();
-//        }
-//
-//        map<string,animal*>::iterator ait = this->find(aPtr->indITBStr);
-//        if(ait == this->end()){
-//          (*this)[aPtr->indITBStr] = aPtr;
-//
-//          LOGD<<"aPtr->indITBStr "<<aPtr->indITBStr<<" , aPtr->birthYearStr "<<aPtr->birthYearStr<<" ,aPtr->birthMonthSt "<<aPtr->birthMonthStr<<" ,aPtr->birthDayStr "<<aPtr->birthDayStr
-//              <<" ,aPtr->numDescendantsWWITB "<<aPtr->numDescendantsWWITB<<" ,aPtr->numObsWWITB "<<aPtr->numObsWWITB<<" ,aPtr->solWWITB "<<aPtr->solWWITB<<" ,aPtr->solMatWWITB "<<aPtr->solMatWWITB
-//              <<" ,aPtr->accWWITB "<<aPtr->accWWITB<<" , aPtr->matAccWWITB "<<aPtr->matAccWWITB;
-//
-//        }
-//
-//        //Sophie: Basis festlegen
-//        if(aPtr->birthYearStr >= startYear && aPtr->birthYearStr <= endYear){
-//          if(aPtr->sexITBStr == "M"){
-//            aPtr->base = true;
-//            LOGD<<"aPtr->indITBStr "<<aPtr->indITBStr<<" is flagged as basis animal";
-//          }
-//        }
-//
+        if(rec%100000==0){
+          cout<<rec<<" records processed \r";
+          cout.flush();
+        }
+
+        map<string,animal*>::iterator ait = this->find(aPtr->indStr);
+        if(ait == this->end()){
+          (*this)[aPtr->indStr] = aPtr;
+
+        }
+
       }
 
     }
 
-    cout<<"\nTotal number of interbeef animals: "<<rec<<endl;
+    cout<<"\nTotal number of animals in the input-file: "<<rec<<endl;
 
 }
 
