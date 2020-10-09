@@ -20,6 +20,7 @@
 #include <chrono>
 #include <ctime>
 #include "bloodMap.h"
+#include "rutil.h"
 
 using namespace std;
 
@@ -72,7 +73,6 @@ void bloodMap::makeReadableBloodComposite(string bloodFile, string bloodFileRefo
 
     //Extract field animalID of the line
     indnumstr = colData[0];
-    simpleDebug("makeReadableBloodComposite()_numCols are " + to_string(numCols), indnumstr);
 
     //Extract field of the line containing breed and blood composite
     numberOfBreed = (numCols - 1)/numberElementPerBreed;
@@ -82,11 +82,9 @@ void bloodMap::makeReadableBloodComposite(string bloodFile, string bloodFileRefo
     //Build BloodComposite-Map for an animalID
     for(int i = 1; i<= numberOfBreed; i++){
       bPtr->BloodComposite[colData[(i-1)*numberElementPerBreed+1]] = stoi(colData[i*numberElementPerBreed]);
-      simpleDebug("makeReadableBloodComposite()_breedcode is " + colData[(i-1)*numberElementPerBreed+1] + " and bloodcomposite is " + colData[i*numberElementPerBreed], indnumstr);
     }
 
     (*this)[indnumstr] = bPtr;
-    simpleDebug("makeReadableBloodComposite()_Insert BloodComposite-Map ", indnumstr);
   }
 
   datafile.close();
