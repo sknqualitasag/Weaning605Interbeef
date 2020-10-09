@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "constants.h"
+#include "constant.h"
 
 using namespace Rcpp;
 
