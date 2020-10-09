@@ -5,19 +5,20 @@
 
 using namespace Rcpp;
 
-// rcpp_hello
-List rcpp_hello();
-RcppExport SEXP _Weaning605Interbeef_rcpp_hello() {
+// Weaning605Interbeef_main
+int Weaning605Interbeef_main(std::string paramFileName);
+RcppExport SEXP _Weaning605Interbeef_Weaning605Interbeef_main(SEXP paramFileNameSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello());
+    Rcpp::traits::input_parameter< std::string >::type paramFileName(paramFileNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(Weaning605Interbeef_main(paramFileName));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_Weaning605Interbeef_rcpp_hello", (DL_FUNC) &_Weaning605Interbeef_rcpp_hello, 0},
+    {"_Weaning605Interbeef_Weaning605Interbeef_main", (DL_FUNC) &_Weaning605Interbeef_Weaning605Interbeef_main, 1},
     {NULL, NULL, 0}
 };
 
