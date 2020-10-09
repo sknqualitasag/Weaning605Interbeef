@@ -50,33 +50,33 @@ void animalMap::inputData(string dataFile){
       if(rec==0){
         numCol = colData.size();
       }
-//      string indstr  = colData[0];
-//      string traitname = colData[1];
-//      int numDescendants  = atoi(colData[2].c_str());
-//      int numObs  = atoi(colData[3].c_str());
-//      double sol  = atof(colData[4].c_str());
-//      double acc = atof(colData[5].c_str());
-//      string type  = colData[6];
-//      string label = colData[7];
-//      string pubcode = colData[8];
-//      string base = colData[9];
-//      rec++;
-//      if(label == CONSTANTS::EBV_LABEL) {
-//
-//        animal *aPtr = new animal(indstr, traitname, acc); //Sophie
-//
-//        if(rec%100000==0){
-//          cout<<rec<<" records processed \r";
-//          cout.flush();
-//        }
-//
-//        map<string,animal*>::iterator ait = this->find(aPtr->indStr);
-//        if(ait == this->end()){
-//          (*this)[aPtr->indStr] = aPtr;
-//
-//        }
-//
-//      }
+      string indstr  = colData[0];
+      string traitname = colData[1];
+      int numDescendants  = atoi(colData[2].c_str());
+      int numObs  = atoi(colData[3].c_str());
+      double sol  = atof(colData[4].c_str());
+      double acc = atof(colData[5].c_str());
+      string type  = colData[6];
+      string label = colData[7];
+      string pubcode = colData[8];
+      string base = colData[9];
+      rec++;
+      if(label == CONSTANTS::EBV_LABEL) {
+
+        animal *aPtr = new animal(indstr, traitname, acc); //Sophie
+
+        if(rec%100000==0){
+          cout<<rec<<" records processed \r";
+          cout.flush();
+        }
+
+        map<string,animal*>::iterator ait = this->find(aPtr->indStr);
+        if(ait == this->end()){
+          (*this)[aPtr->indStr] = aPtr;
+
+        }
+
+      }
 
     }
 
