@@ -25,7 +25,7 @@ public:
   bloodMap BreedComposite;
 
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
-  void readRRTDMPedigree(string pedfileName);
+  //void readRRTDMPedigree(string pedfileName);
 
   void inputData(string dataFile);
 
