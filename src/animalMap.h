@@ -13,6 +13,7 @@
 #include <functional>
 #include <sstream>
 #include "animal.h"
+#include "bloodMap.h"
 
 using namespace std;
 
