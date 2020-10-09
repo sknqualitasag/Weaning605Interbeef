@@ -4,6 +4,8 @@
 #include <ctime>
 #include <Rcpp.h>
 #include <plog/Log.h>
+#include "parmMap.h"
+
 
 
 using namespace Rcpp;
@@ -27,6 +29,18 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   std::cout<<"-----------------------------------------------------------------"<< std::endl;
   std::cout << "START Weaning605Interbeef_main() at " << std::ctime(&start_time) << std::endl;
   std::cout<<"-----------------------------------------------------------------"<< std::endl;
+
+  std::cout<<"ParameterFile = "<<paramFileName<<std::endl;
+  ParmMap parmMap;
+  parmMap.fileName = paramFileName;
+  parmMap.inputParms();
+
+  std::string dataFileWwd							        = parmMap.getString("dataFileName");
+  std::string dataFileWwm							        = parmMap.getString("dataFileName");
+  std::string bloodFile							          = parmMap.getString("bloodFileName");
+  std::string bloodFileReformattted	          = bloodFile+".reformatted";
+  std::string pedigreeFile							      = parmMap.getString("pedigreeFileName");
+  std::string pedigreeFileReformatted     	  = pedigreeFile+".reformatted";
 
 
   //Time tracking
