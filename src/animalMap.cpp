@@ -33,7 +33,7 @@ void animalMap::inputData(string dataFile){
   cout<<"\ninputData(): Reading file "<<dataFile<<endl;
   cout<<"*****************************************************************"<< endl;
 
-    std::string sep(";");
+    std::string sep(" ");
     std::string subStr;
     Tokenizer colData;
     string inputStr;
@@ -46,10 +46,10 @@ void animalMap::inputData(string dataFile){
         subStr = inputStr.substr(0,foundloc);
         inputStr = subStr;
       }
-//      colData.getTokens(inputStr,sep);
-//      if(rec==0){
-//        numCol = colData.size();
-//      }
+      colData.getTokens(inputStr,sep);
+      if(rec==0){
+        numCol = colData.size();
+      }
 //      string indstr  = colData[0];
 //      string traitname = colData[1];
 //      int numDescendants  = atoi(colData[2].c_str());
