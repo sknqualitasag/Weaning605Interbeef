@@ -6,6 +6,7 @@
 #include <plog/Log.h>
 #include "parmMap.h"
 #include "animalMap.h"
+#include "bloodMap.h"
 
 
 
