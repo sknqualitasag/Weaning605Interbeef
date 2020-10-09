@@ -3,28 +3,25 @@
 #include <iomanip>
 #include <string>
 #include <cctype>
-#include <strstream>
+#include <sstream>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <math.h>
 #include <cmath>
 #include <map>
 #include <vector>
+#include <algorithm>
 #include <functional>
-#include <sstream>
-#include "animal.h"
+#include <stdio.h>
+#include <cstring>
+#include <plog/Log.h>
+#include "constant.h"
+#include "blood.h"
+
+
+
 
 using namespace std;
 
 
-class animalMap : public map<string,animal*> {
-
-public:
-
-  bloodMap BreedComposite;
-
-
-  void inputData(string dataFile);
-
-
-};
+blood::blood(){}

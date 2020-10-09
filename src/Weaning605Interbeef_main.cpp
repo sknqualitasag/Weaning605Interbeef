@@ -44,6 +44,11 @@ int Weaning605Interbeef_main(std::string paramFileName) {
 
   animalMap aMap;
 
+  //Read blood composite file
+  bloodMap bMap;
+  bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
+  aMap.BreedComposite = bMap;
+
   aMap.inputData(dataFile);
 
 
