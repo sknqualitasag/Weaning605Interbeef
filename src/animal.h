@@ -26,6 +26,8 @@ using namespace std;
 class animal {
 public:
 
+  animal(string indstr, string traitname, double acc);
+
   //double meanWW,meanMatWW;
   //string myId, breed;
   //bool base;

@@ -20,6 +20,10 @@
 
 using namespace std;
 
+animal::animal(string indstr, string traitname, double acc){
+
+}
+
 //animal::  animal(string myId, string birthDateYYYYMMDD, int numDescendants, int numObs, int numDaughter, int numProgrenies, double sol, double acc, double matSol, double matAcc, int numProgreniesCH, int numHerdsCH, double itbPubld, double itbPublm){ //Sophie
 //
 //

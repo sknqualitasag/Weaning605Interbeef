@@ -20,6 +20,7 @@ using namespace std;
 class animalMap : public map<string,animal*> {
 
 public:
-  //void inputSolITB(char* fname1, string startYear, string endYear);
+
+  void inputData(string dataFile);
 
 };
