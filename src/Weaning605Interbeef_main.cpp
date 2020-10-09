@@ -5,6 +5,7 @@
 #include <Rcpp.h>
 #include <plog/Log.h>
 #include "parmMap.h"
+#include "animalMap.h"
 
 
 
@@ -35,12 +36,14 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   parmMap.fileName = paramFileName;
   parmMap.inputParms();
 
-  std::string dataFileWwd							        = parmMap.getString("dataFileName");
-  std::string dataFileWwm							        = parmMap.getString("dataFileName");
+  std::string dataFileWwd							        = parmMap.getString("dataFileNameWwd");
+  std::string dataFileWwm							        = parmMap.getString("dataFileNameWwm");
   std::string bloodFile							          = parmMap.getString("bloodFileName");
   std::string bloodFileReformattted	          = bloodFile+".reformatted";
   std::string pedigreeFile							      = parmMap.getString("pedigreeFileName");
   std::string pedigreeFileReformatted     	  = pedigreeFile+".reformatted";
+
+  animalMap aMap;
 
 
   //Time tracking
