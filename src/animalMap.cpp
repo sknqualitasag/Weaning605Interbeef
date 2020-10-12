@@ -196,19 +196,6 @@ void animalMap::makeReadableRRTDMPedigree(string ipedfile, string opedfile){
     lineNumber++;
     numCols = colData.size();
     if(numCols == CONSTANTS::NUM_COL_RRTDM){
-      //      LOGD<<"\n*";
-      //      LOGD<<"Read RRTDM-Ped for animal: "<<colData[5];
-      //      LOGD<<" colData[0] = indnumstr: "<<colData[0];
-      //      LOGD<<" colData[1] = sirenumstr: "<<colData[1];
-      //      LOGD<<" colData[2] = damnumstr: "<<colData[2];
-      //      LOGD<<" colData[3] = birthdate.YearStr: "<<colData[3];
-      //      LOGD<<" colData[4] = itbidstr: "<<colData[4];
-      //      LOGD<<" colData[5] = indstr: "<<colData[5];
-      //      LOGD<<" colData[6] = indbirthdatestr: "<<colData[6];
-      //      LOGD<<" colData[7] = indbreedstr: "<<colData[7];
-      //      LOGD<<" colData[8] = indactivstr: "<<colData[8];
-      //      LOGD<<" colData[9] = indhbstr: "<<colData[9];
-      //      LOGD<<" colData[10] = inditbbreedstr: "<<colData[10];
 
       indnumstr = colData[0];
       sirenumstr = colData[1];
@@ -225,19 +212,6 @@ void animalMap::makeReadableRRTDMPedigree(string ipedfile, string opedfile){
       outputfile<<indnumstr<<" "<<sirenumstr<<" "<<damnumstr<<" "<<birthyearstr<<" "<<itbidstr<<" "<<indstr<<" "<<indbirthdatestr<<" "<<indbreedstr<<" "
                 <<indactivstr<<" "<<indhbstr<<" "<<inditbbreedstr<<endl;
     } else if(numCols == CONSTANTS::NUM_COL_RRTDM_WITH_MISSING){
-      //      LOGD<<"\n*";
-      //      LOGD<<"Read RRTDM-Ped for animal: "<<colData[4];
-      //      LOGD<<" colData[0] = indnumstr: "<<colData[0];
-      //      LOGD<<" colData[1] = sirenumstr: "<<colData[1];
-      //      LOGD<<" colData[2] = damnumstr: "<<colData[2];
-      //      LOGD<<" birthdate.YearStr: 0000";
-      //      LOGD<<" colData[3] = itbidstr: "<<colData[3];
-      //      LOGD<<" colData[4] = indstr: "<<colData[4];
-      //      LOGD<<" indbirthdatestr: 00000000";
-      //      LOGD<<" colData[5] = indbreedstr: "<<colData[5];
-      //      LOGD<<" colData[6] = indactivstr: "<<colData[6];
-      //      LOGD<<" colData[7] = indhbstr: "<<colData[7];
-      //      LOGD<<" colData[8] = inditbbreedstr: "<<colData[8];
 
       indnumstr = colData[0];
       sirenumstr = colData[1];
@@ -314,6 +288,11 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
     sexstr=getSexWithITBid(itbidstr);
 
+    simpleDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
+      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdate " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
+        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
+
+
     if(indbreedstr == CONSTANTS::STRING_NA){
       continue;
     }
@@ -338,6 +317,8 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
+      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+
     }
     else {
       cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
