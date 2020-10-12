@@ -254,7 +254,6 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
-      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
     }
     else {
       cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
@@ -289,7 +288,6 @@ string animalMap::verifyBreed(string breedstr, string indstr){
     return "HH";
   }
   else{
-    simpleDebug("verifyBreed()_Setting breed to missing, because breed "+breedstr +" is not in the breed list (KR,SI,SF,HO,BV,BS,OB,ROB,JE,MO,AN,AU,CH,LM,HH,AL,BD,SL,PI)", indstr);
     return CONSTANTS::STRING_NA;
   }
 
