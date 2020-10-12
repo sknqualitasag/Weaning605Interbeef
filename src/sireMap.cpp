@@ -14,7 +14,6 @@
 #include <functional>
 #include <stdio.h>
 #include <cstring>
-#include "animalMap.h"
 #include <plog/Log.h>
 #include <chrono>
 #include <ctime>
