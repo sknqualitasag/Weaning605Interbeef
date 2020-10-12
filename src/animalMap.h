@@ -31,6 +31,7 @@ public:
   void simpleDebug(string message, string tvdid);
   // list of TVD-Ids for which we want to output debugging information
   vector <string> debugTvdIds;
+  void To_out();
 
   bloodMap BreedComposite;
 

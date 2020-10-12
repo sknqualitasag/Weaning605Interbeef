@@ -104,6 +104,17 @@ void animalMap::simpleDebug(string message, string tvdid){
 }
 
 
+void animalMap::To_out(){
+  cout<<"\nTo_out()"<<endl;
+  cout<<"*****************************************************************"<< endl;
+
+  for(map<string, animal*>::iterator it=begin();it!=end();it++){
+    animal *ptr = (*it).second;
+  }
+}
+
+
+
 void animalMap::inputData(string dataFile){
 
   ifstream datafile(dataFile.c_str());
@@ -319,25 +330,25 @@ void animalMap::readRRTDMPedigree(string pedfileName){
       cout.flush();
     }
 
-    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
-      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
-        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
+    //outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
+    //  " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
+    //    " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
 
     string psRunningMode = getRunningMode();
 
     //new animal record
     animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
-//
-//    map<string,animal*>::iterator ait = this->find(indnumstr);
-//    if(ait == this->end()){
-//      (*this)[indnumstr] = aPtr;
-//      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
-//
-//    }
-//    else {
-//      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
-//      exit(1);
-//    }
+
+    map<string,animal*>::iterator ait = this->find(indnumstr);
+    if(ait == this->end()){
+      (*this)[indnumstr] = aPtr;
+   //   outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+
+    }
+    else {
+      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
+      exit(1);
+    }
   }
 
 
