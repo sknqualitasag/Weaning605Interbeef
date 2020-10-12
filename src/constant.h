@@ -17,6 +17,8 @@ public:
   static const unsigned NUM_COL_RRTDM_WITH_MISSING;
   // string corresponding to missing value code
   static const char STRING_NA[];
+  //' missing value code as integer
+  static const int INT_NA;
   // length of TVD-Nr in number of characters
   static const unsigned TVD_NR_LENGTH;
   //' length of ITB-Nr in number of characters
