@@ -313,11 +313,11 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     sexstr=getSexWithITBid(itbidstr);
 
     if(indbreedstr == CONSTANTS::STRING_NA){
-      cout<<"if-statement: indbreedstr "<<indbreedstr<<" of "<<indstr<<endl;
+      simpleDebug("readRRTDMPedigree()_Animal is not read in animalMap, because indbreedstr is missing", indstr);
       continue;
     }
     if(sexstr == CONSTANTS::STRING_NA){
-      cout<<"if-statement: sexstr "<<sexstr<<" of "<<indstr<<endl;
+      simpleDebug("readRRTDMPedigree()_Animal is not read in animalMap, because sexstr is missing", indstr);
       continue;
     }
 
@@ -332,9 +332,9 @@ void animalMap::readRRTDMPedigree(string pedfileName){
       cout.flush();
     }
 
-    //outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
-    //  " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
-    //    " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
+    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
+      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
+        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
 
     string psRunningMode = getRunningMode();
 
@@ -344,7 +344,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
-   //   outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
 
     }
     else {
