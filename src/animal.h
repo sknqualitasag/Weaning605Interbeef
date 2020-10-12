@@ -17,6 +17,7 @@
 #include <sstream>
 #include <vector>
 #include <map>
+#include "date.h"
 //#include "constants.h"
 
 
@@ -26,7 +27,7 @@ using namespace std;
 class animal {
 public:
 
-  string indStr, traitStr, damStr, sireStr, indBreedStr, sexBirthStr,;
+  string indStr, traitStr, damStr, sireStr, indBreedStr, sexBirthStr;
   double accDbl;
   string itbidStr, indactivStr, indhbStr, inditbbreedStr, itbDamStr, itbSireStr;
   long int indDbIdLi;   //technical ID from DB for animal

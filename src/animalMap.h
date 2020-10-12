@@ -14,6 +14,7 @@
 #include <sstream>
 #include "animal.h"
 #include "bloodMap.h"
+#include "date.h"
 
 using namespace std;
 
