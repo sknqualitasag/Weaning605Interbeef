@@ -296,8 +296,6 @@ void animalMap::readRRTDMPedigree(string pedfileName){
       exit(8);
     }
 
-    cout<<"inputStr: "<<inputStr<<endl;
-
     indnumstr = colData[0];
     sirenumstr = colData[1];
     damnumstr = colData[2];
@@ -312,9 +310,11 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
     sexstr=getSexWithITBid(itbidstr);
 
+    // get only interbeef breeds
     if(indbreedstr == CONSTANTS::STRING_NA){
       continue;
     }
+    // get only males
     if(sexstr == CONSTANTS::STRING_NA){
       continue;
     }
@@ -338,8 +338,6 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
-      cout<<"aPtr: "<<aPtr->indDbIdLi<<" inditbbreedstr "<<aPtr->inditbbreedStr<<" indStr"<<aPtr->indStr<<endl;
-
     }
     else {
       cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
