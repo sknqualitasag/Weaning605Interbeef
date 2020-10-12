@@ -409,7 +409,7 @@ void animalMap::mergeInfoMaps(animalMap &aMap){
 }
 
 
-void animalMap::outputInterbeef605(string psBreed, string psTrait, animalMap &pMap){
+void animalMap::outputInterbeef605(string psBreed, string psTrait){
 
   string itbBreed=convertBreed2InterbullBreed(psBreed);
 
