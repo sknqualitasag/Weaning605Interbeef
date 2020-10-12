@@ -24,6 +24,11 @@ using namespace std;
 
 animal::animal(string indstr, string traitname, double acc){
 
+  indDbIdLi = CONSTANTS::INT_NA;
+  damDbIdLi = CONSTANTS::INT_NA;
+  sireDbIdLi = CONSTANTS::INT_NA;
+  itbidStr = CONSTANTS::STRING_NA;
+
   indStr = indstr;
   traitStr = traitname;
   accDbl = acc;

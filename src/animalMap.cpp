@@ -419,36 +419,6 @@ void animalMap::outputInterbeef605(string psBreed, string psTrait, animalMap &pM
 
   ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
 
-  for(map<string,animal*>::iterator it = this->begin();it != this->end(); it++){
-
-    animal *aPtr =(*it).second;
-
-//    if(aPtr->indBreedStr == psBreed){
-//      if(purgeBloodcomposite(aPtr->animIDStr, psBreed)){
-//        if(psTrait == CONSTANTS::WW_INTERBEEFTRAIT){
-//          if(aPtr->weaningWeightInt != CONSTANTS::INT_NA && aPtr->birthWeightInt!= CONSTANTS::INT_NA && aPtr->ageAtWeaningInDays!= CONSTANTS::INT_NA){
-//            datafile601<<aPtr->itbIDStr<<endl;
-//            outputDebug("outputInterbeef601()_Animal "+ aPtr->indStr + " has itbIDStr " + aPtr->itbIDStr + " and has trait " + CONSTANTS::WW_INTERBEEFTRAIT + " for breed  " + psBreed, aPtr->indStr);
-//          }
-//        }
-//
-//      }
-//
-//    }
-//
-  }
 
 }
 
-
-string animalMap::convertBreed2InterbullBreed(string psBreed){
-
-  if(psBreed == "AN") return("AAN");
-  else if(psBreed == "CH") return("CHA");
-  else if(psBreed == "HH") return("HER");
-  else if(psBreed == "LM") return("LIM");
-  else if(psBreed == "SI") return("SIM");
-  else return("XXX");
-
-
-}

@@ -34,8 +34,7 @@ public:
 
   void inputData(string dataFile);
 
-  void outputInterbeef605(string psBreed, string psTrait, animalMap &pMap);
-  string convertBreed2InterbullBreed(string psBreed);
+  void outputInterbeef605(string psBreed, string psTrait);
 
 
 
