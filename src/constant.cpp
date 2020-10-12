@@ -11,6 +11,8 @@ const unsigned CONSTANTS::NUM_COL_RRTDM = 11;
 const unsigned CONSTANTS::NUM_COL_RRTDM_WITH_MISSING = 9;
 //' missing value code as string
 const char CONSTANTS::STRING_NA[] = "-9999";
+//' missing value code as integer
+const int CONSTANTS::INT_NA = -9999;
 //' length of TVD-Nr in number of characters
 const unsigned CONSTANTS::TVD_NR_LENGTH = 14;
 //' length of ITB-Nr in number of characters

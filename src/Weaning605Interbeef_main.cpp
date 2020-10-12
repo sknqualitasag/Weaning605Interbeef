@@ -52,8 +52,8 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   aMap.BreedComposite = bMap;
 
   //Read pedigree file
-  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);//Sophie
-  pMap.readRRTDMPedigree(pedigreeFileReformatted);//Sophie
+  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
+  pMap.readRRTDMPedigree(pedigreeFileReformatted);
 
 
   //Read data file
