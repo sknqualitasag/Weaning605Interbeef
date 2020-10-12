@@ -24,7 +24,7 @@
 using namespace std;
 
 
-sire::sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId){
+sire::sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr){
 
   indStr = indstr;
   traitStr = traitname;
@@ -34,8 +34,8 @@ sire::sire(string indstr, string traitname, double acc, string indbreedstr, date
   itbidStr = itbidstr;
   sexBirthStr = sexstr;
   inditbbreedStr = inditbbreedstr;
-  indDbIdLi = indDbId;
-  damDbIdLi = damDbId;
-  sireDbIdLi = sireDbId;
+  indDbIdStr = indDbIdstr;
+  damDbIdStr = damDbIdstr;
+  sireDbIdStr = sireDbIdstr;
 
 }

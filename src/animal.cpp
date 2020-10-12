@@ -25,9 +25,9 @@ using namespace std;
 
 animal::animal(string indstr, string traitname, double acc, string psRunningMode){
 
-  indDbIdLi = CONSTANTS::INT_NA;
-  damDbIdLi = CONSTANTS::INT_NA;
-  sireDbIdLi = CONSTANTS::INT_NA;
+  indDbIdStr = CONSTANTS::INT_NA;
+  damDbIdStr = CONSTANTS::INT_NA;
+  sireDbIdStr = CONSTANTS::INT_NA;
   itbidStr = CONSTANTS::STRING_NA;
 
   indStr = indstr;
@@ -41,15 +41,15 @@ animal::animal(string indstr, string traitname, double acc, string psRunningMode
 
 
 // Constructor using DB-Ids of animal, sire and dam as additional arguments
-animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId, string psRunningMode){
+animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr, string psRunningMode){
 
   indStr = indstr;
   indactivStr = indactivstr;
   indhbStr = indhbstr;
   inditbbreedStr = inditbbreedstr;
-  indDbIdLi = indDbId;
-  damDbIdLi = damDbId;
-  sireDbIdLi = sireDbId;
+  indDbIdStr = indDbIdstr;
+  damDbIdStr = damDbIdstr;
+  sireDbIdStr = sireDbIdstr;
   indBreedStr = indbreedstr;
   sexBirthStr = sexstr;
   itbidStr = itbidstr;

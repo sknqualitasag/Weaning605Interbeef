@@ -38,9 +38,9 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
     if(itTVD != aMap.end()){
 
       // new sire record
-      sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, itTVD->second->indBreedStr, itTVD->second->birthdate, itTVD->second->itbidStr, itTVD->second->sexBirthStr, itTVD->second->inditbbreedStr, itTVD->second->indDbIdLi, itTVD->second->damDbIdLi, itTVD->second->sireDbIdLi);
+      sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, itTVD->second->indBreedStr, itTVD->second->birthdate, itTVD->second->itbidStr, itTVD->second->sexBirthStr, itTVD->second->inditbbreedStr, itTVD->second->indDbIdStr, itTVD->second->damDbIdStr, itTVD->second->sireDbIdStr);
 
-      (*this)[itTVD->second->indDbIdLi] = sPtr;
+      (*this)[itTVD->second->indDbIdStr] = sPtr;
 
     }
 

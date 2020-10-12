@@ -11,15 +11,11 @@ using namespace std;
 class sire{
 public:
 
-  string indStr, traitStr, indBreedStr, sexBirthStr;
+  string indStr, traitStr, indBreedStr, sexBirthStr, itbidStr, inditbbreedStr, indDbIdStr, damDbIdStr, sireDbIdStr;
   double accDbl;
-  string itbidStr, inditbbreedStr;
-  long int indDbIdLi;   //technical ID from DB for animal
-  long int damDbIdLi;   //technical ID from DB for dam
-  long int sireDbIdLi;  //technical ID from DB for sire
   date birthdate;
 
-  sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId);
+  sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr);
 
 };
 

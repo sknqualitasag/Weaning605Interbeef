@@ -26,13 +26,9 @@ using namespace std;
 class animal {
 public:
 
-  string indStr, traitStr, damStr, sireStr, indBreedStr, sexBirthStr;
+  string indStr, traitStr, damStr, sireStr, indBreedStr, sexBirthStr, indDbIdStr, damDbIdStr, sireDbIdStr;
   double accDbl;
   string itbidStr, indactivStr, indhbStr, inditbbreedStr, itbDamStr, itbSireStr;
-  long int indDbIdLi;   //technical ID from DB for animal
-  long int damDbIdLi;   //technical ID from DB for dam
-  long int sireDbIdLi;  //technical ID from DB for sire
-  string dataSourceStr;
   date birthdate;
 
   animal(string indstr, string traitname, double acc, string psRunningMode);
