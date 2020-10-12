@@ -272,76 +272,76 @@ void animalMap::readRRTDMPedigree(string pedfileName){
   unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
 
   // reading RRTDM-pedigree file line by line
-  while(getline(datafile,inputStr)){
-    colData.getTokens(inputStr,sep);
-    lineNumber++;
-    if (lineNumber==1){
-      numCols = colData.size();
-      cout<<"Number of columns: "<<numCols<<endl;
-    }
-    else if(colData.size() != numCols){
-      cout<<"readRRTDMPedigree() Line "<<lineNumber<<" has "<<colData.size()<<" columns, "<<numCols<<" expected!"<<endl;
-      cerr<<"record is: "<<inputStr<<endl;
-      exit(8);
-    }
-
-    indnumstr = colData[0];
-    sirenumstr = colData[1];
-    damnumstr = colData[2];
-    birthyearstr = colData[3];
-    itbidstr = colData[4];
-    indstr = colData[5];
-    date indbirthdate = date(colData[6]);
-    indbreedstr = verifyBreed(colData[7],indstr);
-    indactivstr = colData[8];
-    indhbstr = colData[9];
-    inditbbreedstr = colData[10];
-
-    sexstr=getSexWithITBid(itbidstr);
-
-    cout<<<"indnumstr "<<indnumstr<<endl;
-    cout<<"sirenumstr "<<sirenumstr<<endl;
-    cout<<"damnumstr "<<damnumstr<<endl;
-    cout<<"birthyearstr "<<birthyearstr<<endl;
-    cout<<"itbidstr "<<itbidstr<<endl;
-    cout<<"indstr "<<indstr<<endl;
-    cout<<"indbreedstr "<<indbreedstr<<endl;
-    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
-
-    if(indbreedstr == CONSTANTS::STRING_NA){
-      continue;
-    }
-    if(sexstr == CONSTANTS::STRING_NA){
-      continue;
-    }
-
-    // find maximum animal id
-    if(atoi(indnumstr.c_str()) > maxid){
-      maxid = atoi(indnumstr.c_str());
-    }
-
-    rec++;
-    if(rec%100000==0){
-      cout<<rec<<" records processed \r";
-      cout.flush();
-    }
-
-    string psRunningMode = getRunningMode();
-
-    //new animal record
-    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
-
-    map<string,animal*>::iterator ait = this->find(indnumstr);
-    if(ait == this->end()){
-      (*this)[indnumstr] = aPtr;
-      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
-
-    }
-    else {
-      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
-      exit(1);
-    }
-  }
+//  while(getline(datafile,inputStr)){
+//    colData.getTokens(inputStr,sep);
+//    lineNumber++;
+//    if (lineNumber==1){
+//      numCols = colData.size();
+//      cout<<"Number of columns: "<<numCols<<endl;
+//    }
+//    else if(colData.size() != numCols){
+//      cout<<"readRRTDMPedigree() Line "<<lineNumber<<" has "<<colData.size()<<" columns, "<<numCols<<" expected!"<<endl;
+//      cerr<<"record is: "<<inputStr<<endl;
+//      exit(8);
+//    }
+//
+//    indnumstr = colData[0];
+//    sirenumstr = colData[1];
+//    damnumstr = colData[2];
+//    birthyearstr = colData[3];
+//    itbidstr = colData[4];
+//    indstr = colData[5];
+//    date indbirthdate = date(colData[6]);
+//    indbreedstr = verifyBreed(colData[7],indstr);
+//    indactivstr = colData[8];
+//    indhbstr = colData[9];
+//    inditbbreedstr = colData[10];
+//
+//    sexstr=getSexWithITBid(itbidstr);
+//
+//    cout<<<"indnumstr "<<indnumstr<<endl;
+//    cout<<"sirenumstr "<<sirenumstr<<endl;
+//    cout<<"damnumstr "<<damnumstr<<endl;
+//    cout<<"birthyearstr "<<birthyearstr<<endl;
+//    cout<<"itbidstr "<<itbidstr<<endl;
+//    cout<<"indstr "<<indstr<<endl;
+//    cout<<"indbreedstr "<<indbreedstr<<endl;
+//    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
+//
+//    if(indbreedstr == CONSTANTS::STRING_NA){
+//      continue;
+//    }
+//    if(sexstr == CONSTANTS::STRING_NA){
+//      continue;
+//    }
+//
+//    // find maximum animal id
+//    if(atoi(indnumstr.c_str()) > maxid){
+//      maxid = atoi(indnumstr.c_str());
+//    }
+//
+//    rec++;
+//    if(rec%100000==0){
+//      cout<<rec<<" records processed \r";
+//      cout.flush();
+//    }
+//
+//    string psRunningMode = getRunningMode();
+//
+//    //new animal record
+//    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
+//
+//    map<string,animal*>::iterator ait = this->find(indnumstr);
+//    if(ait == this->end()){
+//      (*this)[indnumstr] = aPtr;
+//      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+//
+//    }
+//    else {
+//      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
+//      exit(1);
+//    }
+//  }
 
 
   datafile.close();
