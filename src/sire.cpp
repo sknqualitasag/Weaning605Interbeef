@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <cstring>
 #include <plog/Log.h>
-#include "constants.h"
 #include "sire.h"
 #include "date.h"
 
