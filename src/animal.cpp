@@ -41,37 +41,30 @@ animal::animal(string indstr, string traitname, double acc, string psRunningMode
 
 
 // Constructor using DB-Ids of animal, sire and dam as additional arguments
-animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string damstr, string sirestr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId, string itbdamstr, string itbsirestr){
-
-  indactivStr = indactivstr;
-  indhbStr = indhbstr;
-  inditbbreedStr = inditbbreedstr;
-  // setting DB-ID data fields
-  indDbIdLi = indDbId;
-  damDbIdLi = damDbId;
-  sireDbIdLi = sireDbId;
+animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId, string psRunningMode){
 
   indStr = indstr;
-  if(damstr != CONSTANTS::STRING_NA){
-    damStr = damstr;
-  }else {
-    damStr = CONSTANTS::STRING_NA;
-  }
-  if(sirestr != CONSTANTS::STRING_NA){
-    sireStr = sirestr;
-  }else{
-    sireStr = CONSTANTS::STRING_NA;
-  }
-
+  constructorDebug("constructor animal()_Constructor called with indStr", indStr, psRunningMode);
+  indactivStr = indactivstr;
+  constructorDebug("constructor animal()_Constructor called with indactivStr "+indactivStr, indStr, psRunningMode);
+  indhbStr = indhbstr;
+  constructorDebug("constructor animal()_Constructor called with indhbStr "+indhbStr, indStr, psRunningMode);
+  inditbbreedStr = inditbbreedstr;
+  constructorDebug("constructor animal()_Constructor called with inditbbreedStr "+inditbbreedStr, indStr, psRunningMode);
+  indDbIdLi = indDbId;
+  constructorDebug("constructor animal()_Constructor called with indDbIdLi "+to_string(indDbIdLi), indStr, psRunningMode);
+  damDbIdLi = damDbId;
+  constructorDebug("constructor animal()_Constructor called with damDbIdLi "+to_string(damDbIdLi), indStr, psRunningMode);
+  sireDbIdLi = sireDbId;
+  constructorDebug("constructor animal()_Constructor called with damDbIdLi "+to_string(sireDbIdLi), indStr, psRunningMode);
   indBreedStr = indbreedstr;
+  constructorDebug("constructor animal()_Constructor called with indBreedStr "+indBreedStr, indStr, psRunningMode);
   sexBirthStr = sexstr;
-
+  constructorDebug("constructor animal()_Constructor called with sexBirthStr "+sexBirthStr, indStr, psRunningMode);
   itbidStr = itbidstr;
-  itbDamStr = itbdamstr;
-  itbSireStr = itbsirestr;
-
+  constructorDebug("constructor animal()_Constructor called with itbidStr "+itbidStr, indStr, psRunningMode);
   birthdate = birthdate;
-
+  constructorDebug("constructor animal()_Constructor called with birthdate "+birthdate.YearStr+birthdate.MonthStr+birthdate.DayStr, indStr, psRunningMode);
 
 }
 
