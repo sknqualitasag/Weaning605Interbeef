@@ -303,15 +303,15 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 //
 //    sexstr=getSexWithITBid(itbidstr);
 //
-    cout<<<"\nindnumstr "<<indnumstr<<endl;
-    cout<<"sirenumstr "<<sirenumstr<<endl;
-    cout<<"damnumstr "<<damnumstr<<endl;
-    cout<<"birthyearstr "<<birthyearstr<<endl;
-    cout<<"itbidstr "<<itbidstr<<endl;
-    cout<<"indstr "<<indstr<<endl;
-    cout<<"indbirthdatestr "<<indbirthdatestr<<endl;
-    cout<<"indbreedstr "<<indbreedstr<<endl;
-    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
+    cout<<<"\nindnumstr "<<colData[0]<<endl;
+    cout<<"sirenumstr "<<colData[1]<<endl;
+    cout<<"damnumstr "<<colData[2]<<endl;
+    cout<<"birthyearstr "<<colData[3]<<endl;
+    cout<<"itbidstr "<<colData[4]<<endl;
+    cout<<"indstr "<<colData[5]<<endl;
+    cout<<"indbirthdatestr "<<colData[6]<<endl;
+    cout<<"indbreedstr "<<colData[7]<<endl;
+    cout<<"inditbbreedstr "<<colData[10]<<endl;
 //
 //    if(indbreedstr == CONSTANTS::STRING_NA){
 //      continue;
