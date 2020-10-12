@@ -293,8 +293,6 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     birthyearstr = colData[3];
     itbidstr = colData[4];
     indstr = colData[5];
-    indbirthdatestr = colData[6];
-    indbreedstr = colData[7];
     date indbirthdate = date(colData[6]);
     indbreedstr = verifyBreed(colData[7],indstr);
     indactivstr = colData[8];
