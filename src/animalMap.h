@@ -25,7 +25,13 @@ public:
   bloodMap BreedComposite;
 
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
-  //void readRRTDMPedigree(string pedfileName);
+  void readRRTDMPedigree(string pedfileName);
+  unsigned maxid=0;//the maximum id found in pedigree
+
+  string verifyBreed(string breedstr, string indstr);
+
+
+
 
   void inputData(string dataFile);
 

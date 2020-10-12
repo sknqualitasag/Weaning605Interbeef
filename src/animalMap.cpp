@@ -16,6 +16,7 @@
 #include "rutil.h"
 #include <plog/Log.h>
 #include "constant.h"
+#include "date.h"
 
 
 
@@ -187,3 +188,110 @@ void animalMap::makeReadableRRTDMPedigree(string ipedfile, string opedfile){
   outputfile.close();
 
 }
+
+
+void animalMap::readRRTDMPedigree(string pedfileName){
+
+  cout<<"\nreadRRTDMPedigree(): Reading RRTDM-pedigree from "<<pedfileName<<endl;
+  cout<<"*****************************************************************"<< endl;
+
+  ifstream datafile(pedfileName.c_str());
+  if(!datafile){
+    cout<< "Cannot open file "<< pedfileName<<" in readRRTDMPedigree()! \n";
+    exit(1);
+  }
+
+  datafile.setf(ios::skipws);
+  string sep(" ");
+  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr;
+  Tokenizer colData;
+  unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
+
+  // reading RRTDM-pedigree file line by line
+  while(getline(datafile,inputStr)){
+    colData.getTokens(inputStr,sep);
+    lineNumber++;
+    if (lineNumber==1){
+      numCols = colData.size();
+      cout<<"Number of columns: "<<numCols<<endl;
+    }
+    else if(colData.size() != numCols){
+      cout<<"readRRTDMPedigree() Line "<<lineNumber<<" has "<<colData.size()<<" columns, "<<numCols<<" expected!"<<endl;
+      cerr<<"record is: "<<inputStr<<endl;
+      exit(8);
+    }
+
+    indnumstr = colData[0];
+    sirenumstr = colData[1];
+    damnumstr = colData[2];
+    birthyearstr = colData[3];
+    itbidstr = colData[4];
+    indstr = colData[5];
+    date indbirthdate = date(colData[6]);
+    indbreedstr = verifyBreed(colData[7],indstr);
+    indactivstr = colData[8];
+    indhbstr = colData[9];
+    inditbbreedstr = colData[10];
+
+    if(indbreedstr == CONSTANTS::STRING_NA){
+      continue;
+    }
+
+    // find maximum animal id
+    if(atoi(indnumstr.c_str()) > maxid){
+      maxid = atoi(indnumstr.c_str());
+    }
+
+    rec++;
+    if(rec%100000==0){
+      cout<<rec<<" records processed \r";
+      cout.flush();
+    }
+
+    //new animal record
+    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, CONSTANTS::STRING_NA, CONSTANTS::STRING_NA, CONSTANTS::STRING_NA, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), CONSTANTS::STRING_NA, CONSTANTS::STRING_NA);
+
+    map<string,animal*>::iterator ait = this->find(indnumstr);
+    if(ait == this->end()){
+      (*this)[indnumstr] = aPtr;
+      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+    }
+    else {
+      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
+      exit(1);
+    }
+  }
+
+
+  datafile.close();
+
+  cout<<"\nnumber of records on pedigree file: "<<rec<<endl;
+  cout<<this->size()<<" total number of records stored in map."<<endl;
+
+}
+
+
+string animalMap::verifyBreed(string breedstr, string indstr){
+
+  if(breedstr == "AN") {
+    return "AN";
+  }
+  else if(breedstr =="SI") {
+    return "SI";
+  }
+  else if(breedstr =="CH") {
+    return "CH";
+  }
+  else if(breedstr =="LM") {
+    return "LM";
+  }
+  else if(breedstr == "HH") {
+    return "HH";
+  }
+  else{
+    simpleDebug("verifyBreed()_Setting breed to missing, because breed "+breedstr +" is not in the breed list (KR,SI,SF,HO,BV,BS,OB,ROB,JE,MO,AN,AU,CH,LM,HH,AL,BD,SL,PI)", indstr);
+    return CONSTANTS::STRING_NA;
+  }
+
+}
+
