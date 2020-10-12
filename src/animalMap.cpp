@@ -303,7 +303,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 //
 //    sexstr=getSexWithITBid(itbidstr);
 //
-    cout<<<"\nindnumstr "<<colData[0]<<endl;
+    cout<<"\nindnumstr "<<colData[0]<<endl;
     cout<<"sirenumstr "<<colData[1]<<endl;
     cout<<"damnumstr "<<colData[2]<<endl;
     cout<<"birthyearstr "<<colData[3]<<endl;
