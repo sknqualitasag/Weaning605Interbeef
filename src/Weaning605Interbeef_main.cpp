@@ -51,6 +51,12 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   animalMap aMap;
   animalMap pMap;
 
+  //Read blood composite file
+  bloodMap bMap;
+  bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+  bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
+  aMap.BreedComposite = bMap;
+
   //Sophie: Falls Fehler auftretten oder als Hilfe für die Entwicklung
   if (parRunMode == CONSTANTS::DEBUG){
     plog::init(plog::debug, "DEBUG_Weaning605Interbeef_Output.txt"); //Sophie
@@ -64,13 +70,6 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   else {
     aMap.setRunningMode(CONSTANTS::RUNNING_ROUTINE);
   }
-
-  //Read blood composite file
-  bloodMap bMap;
-  bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
-  bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
-  aMap.BreedComposite = bMap;
-
 
   //Read data file
   aMap.inputData(dataFile);
