@@ -313,11 +313,9 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     sexstr=getSexWithITBid(itbidstr);
 
     if(indbreedstr == CONSTANTS::STRING_NA){
-      simpleDebug("readRRTDMPedigree()_Animal is not read in animalMap, because indbreedstr is missing", indstr);
       continue;
     }
     if(sexstr == CONSTANTS::STRING_NA){
-      simpleDebug("readRRTDMPedigree()_Animal is not read in animalMap, because sexstr is missing", indstr);
       continue;
     }
 
@@ -332,10 +330,6 @@ void animalMap::readRRTDMPedigree(string pedfileName){
       cout.flush();
     }
 
-    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
-      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
-        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
-
     string psRunningMode = getRunningMode();
 
     //new animal record
@@ -344,7 +338,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
-      outputDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
+      cout<<"aPtr: "<<aPtr->indDbIdLi<<" inditbbreedstr "<<aPtr->inditbbreedStr<<" indStr"<<aPtr->indStr<<endl;
 
     }
     else {
@@ -391,7 +385,6 @@ string animalMap::getSexWithITBid(string itbidstr){
   string sexstr;
 
   if(itbidstr != CONSTANTS::STRING_NA){
-    cout<<"itbidstr: "<<itbidstr<<" substr(5,1) "<<itbidstr.substr(5,1)<<endl;
     sexstr = itbidstr.substr(5,1);
   }
 
