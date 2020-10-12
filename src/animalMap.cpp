@@ -11,6 +11,9 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <algorithm>
+#include <stdio.h>
+#include <cstring>
 #include <functional>
 #include "animalMap.h"
 #include "rutil.h"
@@ -296,10 +299,14 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
     sexstr=getSexWithITBid(itbidstr);
 
-    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
-      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdate " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
-        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
-
+    cout<<<"indnumstr "<<indnumstr<<endl;
+    cout<<"sirenumstr "<<sirenumstr<<endl;
+    cout<<"damnumstr "<<damnumstr<<endl;
+    cout<<"birthyearstr "<<birthyearstr<<endl;
+    cout<<"itbidstr "<<itbidstr<<endl;
+    cout<<"indstr "<<indstr<<endl;
+    cout<<"indbreedstr "<<indbreedstr<<endl;
+    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
 
     if(indbreedstr == CONSTANTS::STRING_NA){
       continue;
