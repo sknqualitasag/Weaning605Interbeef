@@ -119,7 +119,6 @@ void animalMap::inputData(string dataFile){
     string inputStr;
     int rec=0, numCol, numFound=0, numSkipped=0, numSkipped1=0;
     while (getline(datafile,inputStr)) 	{
-      cout<<"inputStr: "<<inputStr<<endl;
       // remove Mac carriage return from argument...
       size_t foundloc = inputStr.find('\r');
       if ( foundloc != string::npos ) {
