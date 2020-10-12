@@ -35,7 +35,7 @@ animal::animal(string indstr, string traitname, double acc, string psRunningMode
   traitStr = traitname;
   constructorDebug("constructor animal()_Constructor called with traitStr "+traitStr, indStr, psRunningMode);
   accDbl = acc;
-  constructorDebug("constructor animal()_Constructor called with accDbl"+to_string(accDbl), indStr, psRunningMode);
+  constructorDebug("constructor animal()_Constructor called with accDbl "+to_string(accDbl), indStr, psRunningMode);
 
 }
 
