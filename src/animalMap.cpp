@@ -267,7 +267,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
   datafile.setf(ios::skipws);
   string sep(" ");
-  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr, sexstr;
+  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbirthdatestr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr, sexstr;
   Tokenizer colData;
   unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
 
@@ -287,28 +287,31 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
     cout<<"inputStr: "<<inputStr<<endl;
 
-//    indnumstr = colData[0];
-//    sirenumstr = colData[1];
-//    damnumstr = colData[2];
-//    birthyearstr = colData[3];
-//    itbidstr = colData[4];
-//    indstr = colData[5];
+    indnumstr = colData[0];
+    sirenumstr = colData[1];
+    damnumstr = colData[2];
+    birthyearstr = colData[3];
+    itbidstr = colData[4];
+    indstr = colData[5];
+    indbirthdatestr = colData[6];
+    indbreedstr = colData[7];
 //    date indbirthdate = date(colData[6]);
 //    indbreedstr = verifyBreed(colData[7],indstr);
-//    indactivstr = colData[8];
-//    indhbstr = colData[9];
-//    inditbbreedstr = colData[10];
+    indactivstr = colData[8];
+    indhbstr = colData[9];
+    inditbbreedstr = colData[10];
 //
 //    sexstr=getSexWithITBid(itbidstr);
 //
-//    cout<<<"indnumstr "<<indnumstr<<endl;
-//    cout<<"sirenumstr "<<sirenumstr<<endl;
-//    cout<<"damnumstr "<<damnumstr<<endl;
-//    cout<<"birthyearstr "<<birthyearstr<<endl;
-//    cout<<"itbidstr "<<itbidstr<<endl;
-//    cout<<"indstr "<<indstr<<endl;
-//    cout<<"indbreedstr "<<indbreedstr<<endl;
-//    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
+    cout<<<"\nindnumstr "<<indnumstr<<endl;
+    cout<<"sirenumstr "<<sirenumstr<<endl;
+    cout<<"damnumstr "<<damnumstr<<endl;
+    cout<<"birthyearstr "<<birthyearstr<<endl;
+    cout<<"itbidstr "<<itbidstr<<endl;
+    cout<<"indstr "<<indstr<<endl;
+    cout<<"indbirthdatestr "<<indbirthdatestr<<endl;
+    cout<<"indbreedstr "<<indbreedstr<<endl;
+    cout<<"inditbbreedstr "<<inditbbreedstr<<endl;
 //
 //    if(indbreedstr == CONSTANTS::STRING_NA){
 //      continue;
