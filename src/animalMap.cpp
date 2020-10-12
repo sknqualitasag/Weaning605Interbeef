@@ -272,19 +272,21 @@ void animalMap::readRRTDMPedigree(string pedfileName){
   unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
 
   // reading RRTDM-pedigree file line by line
-//  while(getline(datafile,inputStr)){
-//    colData.getTokens(inputStr,sep);
-//    lineNumber++;
-//    if (lineNumber==1){
-//      numCols = colData.size();
-//      cout<<"Number of columns: "<<numCols<<endl;
-//    }
-//    else if(colData.size() != numCols){
-//      cout<<"readRRTDMPedigree() Line "<<lineNumber<<" has "<<colData.size()<<" columns, "<<numCols<<" expected!"<<endl;
-//      cerr<<"record is: "<<inputStr<<endl;
-//      exit(8);
-//    }
-//
+  while(getline(datafile,inputStr)){
+    colData.getTokens(inputStr,sep);
+    lineNumber++;
+    if (lineNumber==1){
+      numCols = colData.size();
+      cout<<"Number of columns: "<<numCols<<endl;
+    }
+    else if(colData.size() != numCols){
+      cout<<"readRRTDMPedigree() Line "<<lineNumber<<" has "<<colData.size()<<" columns, "<<numCols<<" expected!"<<endl;
+      cerr<<"record is: "<<inputStr<<endl;
+      exit(8);
+    }
+
+    cout<<"inputStr: "<<inputStr<<endl;
+
 //    indnumstr = colData[0];
 //    sirenumstr = colData[1];
 //    damnumstr = colData[2];
@@ -341,7 +343,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 //      cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";
 //      exit(1);
 //    }
-//  }
+  }
 
 
   datafile.close();
