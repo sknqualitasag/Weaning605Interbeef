@@ -12,7 +12,6 @@
 #include <vector>
 #include <functional>
 #include <sstream>
-
 #include <set>
 #include <sstream>
 #include <vector>
@@ -36,8 +35,10 @@ public:
   string dataSourceStr;
   date birthdate;
 
-  animal(string indstr, string traitname, double acc);
+  animal(string indstr, string traitname, double acc, string psRunningMode);
   animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string damstr, string sirestr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId, string itbdamstr, string itbsirestr);
+
+  void constructorDebug(string message, string tvdid, string psRunningMode);
 
 
 };

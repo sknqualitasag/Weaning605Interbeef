@@ -130,6 +130,9 @@ void animalMap::inputData(string dataFile){
       if(rec==0){
         numCol = colData.size();
       }
+
+      simpleDebug("inputData()_Input Line inputStr " + inputStr, "");
+
       string indstr  = colData[0];
       string traitname = colData[1];
       int numDescendants  = atoi(colData[2].c_str());
@@ -141,9 +144,14 @@ void animalMap::inputData(string dataFile){
       string pubcode = colData[8];
       string base = colData[9];
       rec++;
+
       if(label == CONSTANTS::EBV_LABEL) {
 
-        animal *aPtr = new animal(indstr, traitname, acc); //Sophie
+        simpleDebug("inputData()_Animal is read in animalMap, because ebv label is CH", indstr);
+
+        string psRunningMode = getRunningMode();
+
+        animal *aPtr = new animal(indstr, traitname, acc, psRunningMode); //Sophie
 
         if(rec%100000==0){
           cout<<rec<<" records processed \r";
@@ -153,6 +161,7 @@ void animalMap::inputData(string dataFile){
         map<string,animal*>::iterator ait = this->find(aPtr->indStr);
         if(ait == this->end()){
           (*this)[aPtr->indStr] = aPtr;
+          outputDebug("inputData()_Animal in animalMap " + aPtr->indStr, indstr);
 
         }
 

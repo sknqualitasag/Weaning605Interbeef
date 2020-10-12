@@ -17,12 +17,13 @@
 #include "rutil.h"
 #include "constant.h"
 #include "date.h"
+#include <plog/Log.h>
 
 
 
 using namespace std;
 
-animal::animal(string indstr, string traitname, double acc){
+animal::animal(string indstr, string traitname, double acc, string psRunningMode){
 
   indDbIdLi = CONSTANTS::INT_NA;
   damDbIdLi = CONSTANTS::INT_NA;
@@ -30,8 +31,11 @@ animal::animal(string indstr, string traitname, double acc){
   itbidStr = CONSTANTS::STRING_NA;
 
   indStr = indstr;
+  constructorDebug("constructor animal()_Constructor called with indStr", indStr, psRunningMode);
   traitStr = traitname;
+  constructorDebug("constructor animal()_Constructor called with traitStr "+traitStr, indStr, psRunningMode);
   accDbl = acc;
+  constructorDebug("constructor animal()_Constructor called with accDbl"+to_string(accDbl), indStr, psRunningMode);
 
 }
 
@@ -69,4 +73,14 @@ animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbi
   birthdate = birthdate;
 
 
+}
+
+
+// simple debug File
+void animal::constructorDebug(string message, string tvdid, string psRunningMode){
+  string localRunningMode = psRunningMode;
+  if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
+    //here Develop-Output-Logfile
+    LOGD <<"Message "<<message<<" of animal "<<tvdid;
+  }
 }
