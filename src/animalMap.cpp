@@ -267,7 +267,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
   datafile.setf(ios::skipws);
   string sep(" ");
-  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbirthdatestr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr, sexstr;
+  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr, sexstr;
   Tokenizer colData;
   unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
 
@@ -295,46 +295,40 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     indstr = colData[5];
     indbirthdatestr = colData[6];
     indbreedstr = colData[7];
-//    date indbirthdate = date(colData[6]);
-//    indbreedstr = verifyBreed(colData[7],indstr);
+    date indbirthdate = date(colData[6]);
+    indbreedstr = verifyBreed(colData[7],indstr);
     indactivstr = colData[8];
     indhbstr = colData[9];
     inditbbreedstr = colData[10];
-//
-//    sexstr=getSexWithITBid(itbidstr);
-//
-    cout<<"\nindnumstr "<<colData[0]<<endl;
-    cout<<"sirenumstr "<<colData[1]<<endl;
-    cout<<"damnumstr "<<colData[2]<<endl;
-    cout<<"birthyearstr "<<colData[3]<<endl;
-    cout<<"itbidstr "<<colData[4]<<endl;
-    cout<<"indstr "<<colData[5]<<endl;
-    cout<<"indbirthdatestr "<<colData[6]<<endl;
-    cout<<"indbreedstr "<<colData[7]<<endl;
-    cout<<"inditbbreedstr "<<colData[10]<<endl;
-//
-//    if(indbreedstr == CONSTANTS::STRING_NA){
-//      continue;
-//    }
-//    if(sexstr == CONSTANTS::STRING_NA){
-//      continue;
-//    }
-//
-//    // find maximum animal id
-//    if(atoi(indnumstr.c_str()) > maxid){
-//      maxid = atoi(indnumstr.c_str());
-//    }
-//
-//    rec++;
-//    if(rec%100000==0){
-//      cout<<rec<<" records processed \r";
-//      cout.flush();
-//    }
-//
-//    string psRunningMode = getRunningMode();
-//
-//    //new animal record
-//    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
+
+    sexstr=getSexWithITBid(itbidstr);
+
+    if(indbreedstr == CONSTANTS::STRING_NA){
+      continue;
+    }
+    if(sexstr == CONSTANTS::STRING_NA){
+      continue;
+    }
+
+    // find maximum animal id
+    if(atoi(indnumstr.c_str()) > maxid){
+      maxid = atoi(indnumstr.c_str());
+    }
+
+    rec++;
+    if(rec%100000==0){
+      cout<<rec<<" records processed \r";
+      cout.flush();
+    }
+
+    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
+      " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdatestr " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
+        " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
+
+    string psRunningMode = getRunningMode();
+
+    //new animal record
+    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
 //
 //    map<string,animal*>::iterator ait = this->find(indnumstr);
 //    if(ait == this->end()){
