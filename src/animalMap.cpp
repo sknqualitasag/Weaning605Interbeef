@@ -296,7 +296,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
     sexstr=getSexWithITBid(itbidstr);
 
-    simpleDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
+    outputDebug("readRRTDMPedigree()_Read RRTDM-Ped for animal: " + indnumstr + " sirenumstr " + sirenumstr + " damnumstr" + damnumstr +
       " birthyearstr " + birthyearstr + " itbidstr " + itbidstr + " indstr " + indstr + " indbirthdate " + indbirthdate.YearStr+indbirthdate.MonthStr+indbirthdate.DayStr + " indbreedstr " + indbreedstr +
         " indactivstr " + indactivstr +  " indhbstr " + indhbstr + " inditbbreedstr " + inditbbreedstr, indnumstr);
 
