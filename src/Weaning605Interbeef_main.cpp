@@ -8,6 +8,7 @@
 #include "animalMap.h"
 #include "bloodMap.h"
 #include "constant.h"
+#include "sireMap.h"
 
 
 
@@ -78,8 +79,9 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
 
-
   //Create a sire map
+  sireMap sMap;
+  sMap.mergeAllInputs(aMap, pMap)
 
   //Prepare 605 Interbeef file
 
