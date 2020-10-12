@@ -81,7 +81,7 @@ int Weaning605Interbeef_main(std::string paramFileName) {
 
   //Create a sire map
   sireMap sMap;
-  sMap.mergeAllInputs(aMap, pMap)
+  sMap.mergeAllInputs(aMap, pMap);
 
   //Prepare 605 Interbeef file
 
