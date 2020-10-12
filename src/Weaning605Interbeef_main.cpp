@@ -54,6 +54,7 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   //Read pedigree file
   pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
+  pMap.mergeInfoMaps(aMap);
 
 
   //Read data file

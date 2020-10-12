@@ -28,6 +28,7 @@ public:
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
   void readRRTDMPedigree(string pedfileName);
   unsigned maxid=0;//the maximum id found in pedigree
+  void mergeInfoMaps(animalMap &aMap);
 
   string verifyBreed(string breedstr, string indstr);
 

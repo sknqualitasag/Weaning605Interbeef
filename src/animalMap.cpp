@@ -293,3 +293,95 @@ string animalMap::verifyBreed(string breedstr, string indstr){
 
 }
 
+
+void animalMap::mergeInfoMaps(animalMap &aMap){
+
+  cout<<"\nmergeInfoMaps()"<<endl;
+  cout<<"*****************************************************************"<< endl;
+
+  //pMap ist mit numerische Ids vom Vater und Mutter aufgebaut, der Rest sind Infos zu dem Tier.
+  for(map<string,animal*>::iterator it = this->begin(); it != this->end();  it++){
+
+    outputDebug("mergeInfoMaps()_animal numeric id is  " + to_string(it->second->indDbIdLi) + " and animal TVD is" + it->second->indStr, it->second->indStr);
+
+    //aMap ist mit den Daten von Tier aufgebaut. Numerische Ids sind auf missing gesetzt.
+    map<string, animal*>::iterator itTVD = aMap.find(it->second->indStr);
+    if(itTVD == aMap.end()){
+      outputDebug("mergeInfoMaps()_animal not found in aMap: " + it->second->indStr, it->second->indStr);
+    }else{
+      //Wenn ein Tier gefunden wird, werden die numerische Ids vom Vater und Mutter sowie interbullID des Tieres in aMap gespeichert.
+      outputDebug("mergeInfoMaps()_animal found in aMap, numeric id in pMap is it->second->indDbIdLi " + to_string(it->second->indDbIdLi) + " and numeric id in aMap is itTVD->second->indDbIdLi " + to_string(itTVD->second->indDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_sire numeric id in pMap is it->second->sireDbIdLi " + to_string(it->second->sireDbIdLi) + " and sire id in aMap is itTVD->second->sireDbIdLi " + to_string(itTVD->second->sireDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_dam numeric id in pMap is it->second->damDbIdLi " + to_string(it->second->damDbIdLi) + " and dam id in aMap is itTVD->second->damDbIdLi " + to_string(itTVD->second->damDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_animal found in aMap, interbullID in pMap is it->second->itbidStr " + it->second->itbidStr + " and interbullID in aMap is itTVD->second->itbidStr " + itTVD->second->itbidStr + " of animal " + it->second->indStr, it->second->indStr);
+      itTVD->second->indDbIdLi = it->second->indDbIdLi;
+      itTVD->second->sireDbIdLi = it->second->sireDbIdLi;
+      itTVD->second->damDbIdLi = it->second->damDbIdLi;
+      itTVD->second->itbidStr = it->second->itbidStr;
+      outputDebug("mergeInfoMaps()_animal found in aMap, numeric id in pMap is it->second->indDbIdLi " + to_string(it->second->indDbIdLi) + " and setting numeric id in aMap is itTVD->second->indDbIdLi " + to_string(itTVD->second->indDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_sire numeric id in pMap is it->second->sireDbIdLi " + to_string(it->second->sireDbIdLi) + " and setting sire id in aMap is itTVD->second->sireDbIdLi " + to_string(itTVD->second->sireDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_dam numeric id in pMap is it->second->damDbIdLi " + to_string(it->second->damDbIdLi) + " and setting dam id in aMap is itTVD->second->damDbIdLi " + to_string(itTVD->second->damDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+      outputDebug("mergeInfoMaps()_animal found in aMap, interbullID in pMap is it->second->itbidStr " + it->second->itbidStr + " and setting interbullID in aMap is itTVD->second->itbidStr " + itTVD->second->itbidStr + " of animal " + it->second->indStr, it->second->indStr);
+
+      //Sobald, dass die numerische Id vom Vater in aMap gespeichert ist, wird in pMap TVDid und interbullID vom Vater gesucht und in aMap gespeichert.
+      if(it->second->sireDbIdLi){
+        map<string,animal*>::iterator sit = this->find(to_string(it->second->sireDbIdLi));
+        if(sit == this->end()){
+          outputDebug("mergeInfoMaps()_sire numeric id not in pMap " + to_string(it->second->sireDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+          itTVD->second->sireStr = CONSTANTS::STRING_NA;
+          itTVD->second->itbSireStr = CONSTANTS::STRING_NA;
+          outputDebug("mergeInfoMaps()_sire tvd is set in aMap to missing " + itTVD->second->sireStr + " , because sire numeric id is not in pMap" + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_sire itbid is set in aMap to missing " + itTVD->second->itbSireStr + " , because sire numeric id is not in pMap" + " of animal " + it->second->indStr, it->second->indStr);
+        }else{
+          outputDebug("mergeInfoMaps()_sire numeric id in pMap is " + to_string(it->second->sireDbIdLi) + " and this TVD id in pMap is " + sit->second->indStr + " and in aMap is " + itTVD->second->sireStr + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_sire numeric id in pMap is " + to_string(it->second->sireDbIdLi) + " and this itb id in pMap is " + sit->second->itbidStr + " and in aMap is set to" + itTVD->second->itbSireStr + " of animal " + it->second->indStr, it->second->indStr);
+          itTVD->second->sireStr = sit->second->indStr;
+          itTVD->second->itbSireStr = sit->second->itbidStr;
+          outputDebug("mergeInfoMaps()_sire numeric id in pMap is " + to_string(it->second->sireDbIdLi) + " and this TVD id in pMap is " + sit->second->indStr + " and in aMap is set to" + itTVD->second->sireStr + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_sire numeric id in pMap is " + to_string(it->second->sireDbIdLi) + " and this itb id in pMap is " + sit->second->itbidStr + " and in aMap is set to" + itTVD->second->itbSireStr + " of animal " + it->second->indStr, it->second->indStr);
+        }
+      }else{
+        itTVD->second->sireStr = CONSTANTS::STRING_NA;
+        itTVD->second->itbSireStr = CONSTANTS::STRING_NA;
+        outputDebug("mergeInfoMaps()_sire numeric id not in pMap " + to_string(it->second->sireDbIdLi) + " therefore set the sire tvd to missing " + itTVD->second->sireStr + " of animal " + it->second->indStr, it->second->indStr);
+        outputDebug("mergeInfoMaps()_sire numeric id not in pMap " + to_string(it->second->sireDbIdLi) + " therefore set the sire itb to missing " + itTVD->second->itbSireStr + " of animal " + it->second->indStr, it->second->indStr);
+      }
+
+      if(it->second->damDbIdLi){
+        map<string,animal*>::iterator dit = this->find(to_string(it->second->damDbIdLi));
+        if(dit == this->end()){
+          outputDebug("mergeInfoMaps()_dam numeric id not in pMap " + to_string(it->second->damDbIdLi) + " of animal " + it->second->indStr, it->second->indStr);
+          itTVD->second->damStr = CONSTANTS::STRING_NA;
+          itTVD->second->itbDamStr = CONSTANTS::STRING_NA;
+          outputDebug("mergeInfoMaps()_dam tvd is set in aMap to missing " + itTVD->second->damStr + " , because dam numeric id is not in pMap" + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_dam itb is set in aMap to missing " + itTVD->second->itbDamStr + " , because dam numeric id is not in pMap" + " of animal " + it->second->indStr, it->second->indStr);
+        }else{
+          outputDebug("mergeInfoMaps()_dam numeric id in pMap is " + to_string(it->second->damDbIdLi) + " and this TVD id in pMap is " + dit->second->indStr + " and in aMap is " + itTVD->second->damStr + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_dam numeric id in pMap is " + to_string(it->second->damDbIdLi) + " and this itb id in pMap is " + dit->second->itbidStr + " and in aMap is " + itTVD->second->itbDamStr + " of animal " + it->second->indStr, it->second->indStr);
+          itTVD->second->damStr = dit->second->indStr;
+          itTVD->second->itbDamStr = dit->second->itbidStr;
+          outputDebug("mergeInfoMaps()_dam numeric id in pMap is " + to_string(it->second->damDbIdLi) + " and this TVD id in pMap is " + dit->second->indStr + " and in aMap is set to" + itTVD->second->damStr + " of animal " + it->second->indStr, it->second->indStr);
+          outputDebug("mergeInfoMaps()_dam numeric id in pMap is " + to_string(it->second->damDbIdLi) + " and this itb id in pMap is " + dit->second->itbidStr + " and in aMap is " + itTVD->second->itbDamStr + " of animal " + it->second->indStr, it->second->indStr);
+        }
+      }else{
+        itTVD->second->damStr = CONSTANTS::STRING_NA;
+        itTVD->second->itbDamStr = CONSTANTS::STRING_NA;
+        outputDebug("mergeInfoMaps()_dam numeric id not in pMap " + to_string(it->second->damDbIdLi) + " therefore set the dam tvd to missing " + itTVD->second->damStr + " of animal " + it->second->indStr, it->second->indStr);
+        outputDebug("mergeInfoMaps()_dam numeric id not in pMap " + to_string(it->second->damDbIdLi) + " therefore set the dam itb to missing " + itTVD->second->itbDamStr + " of animal " + it->second->indStr, it->second->indStr);
+      }
+
+      if(itTVD->second->damStr ==""){
+        itTVD->second->damStr = CONSTANTS::STRING_NA;
+        itTVD->second->itbDamStr = CONSTANTS::STRING_NA;
+      }
+
+      if(itTVD->second->sireStr == ""){
+        itTVD->second->sireStr = CONSTANTS::STRING_NA;
+        itTVD->second->itbSireStr = CONSTANTS::STRING_NA;
+      }
+
+    }
+
+  }
+
+}
