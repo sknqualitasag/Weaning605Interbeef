@@ -63,7 +63,7 @@ animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbi
   constructorDebug("constructor animal()_Constructor called with sexBirthStr "+sexBirthStr, indStr, psRunningMode);
   itbidStr = itbidstr;
   constructorDebug("constructor animal()_Constructor called with itbidStr "+itbidStr, indStr, psRunningMode);
-  birthdate = birthdate;
+  birthdate = indbirthdate;
   constructorDebug("constructor animal()_Constructor called with birthdate "+birthdate.YearStr+birthdate.MonthStr+birthdate.DayStr, indStr, psRunningMode);
 
 }
