@@ -16,7 +16,6 @@
 #include <cstring>
 #include "animalMap.h"
 #include <plog/Log.h>
-#include "constants.h"
 #include <chrono>
 #include <ctime>
 #include "sireMap.h"
