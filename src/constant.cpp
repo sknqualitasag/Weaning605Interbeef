@@ -23,5 +23,20 @@ const unsigned CONSTANTS::BREED_COUNTRY_SEX_CODE_LENGTH = 7;
 const unsigned CONSTANTS::COUNTRY_CODE_LENGTH = 2;
 //' all letters in a string
 const char CONSTANTS::LETTERS[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// string corresponding to breed Limouusin interbeef
+const char CONSTANTS::LM_INTERBEEFBREED[] = "LI";
+// string corresponding to breed Charolais interbeef
+const char CONSTANTS::CH_INTERBEEFBREED[] = "CH";
+// string corresponding to breed Simmental interbeef
+const char CONSTANTS::SM_INTERBEEFBREED[] = "SI";
+// string corresponding to breed Angus interbeef
+const char CONSTANTS::AN_INTERBEEFBREED[] = "AN";
+// string corresponding to breed Hereford interbeef
+const char CONSTANTS::HH_INTERBEEFBREED[] = "HH";
+// string corresponding to trait weaning weight direct interbeef
+const char CONSTANTS::WWD_INTERBEEFTRAIT[] = "AWWD";
+// string corresponding to trait weaning weight maternal interbeef
+const char CONSTANTS::WWM_INTERBEEFTRAIT[] = "AWWM";
+
 
 

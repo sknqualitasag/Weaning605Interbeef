@@ -29,13 +29,15 @@ public:
   void readRRTDMPedigree(string pedfileName);
   unsigned maxid=0;//the maximum id found in pedigree
   void mergeInfoMaps(animalMap &aMap);
-
   string verifyBreed(string breedstr, string indstr);
-
-
-
+  string getSexWithITBid(string itbidstr);
 
   void inputData(string dataFile);
+
+  void outputInterbeef605(string psBreed, string psTrait, animalMap &pMap);
+  string convertBreed2InterbullBreed(string psBreed);
+
+
 
 
 };

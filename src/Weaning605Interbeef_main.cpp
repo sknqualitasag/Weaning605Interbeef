@@ -7,6 +7,7 @@
 #include "parmMap.h"
 #include "animalMap.h"
 #include "bloodMap.h"
+#include "constant.h"
 
 
 
@@ -56,9 +57,12 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
   pMap.mergeInfoMaps(aMap);
 
-
   //Read data file
   aMap.inputData(dataFile);
+
+  //Prepare 605 Interbeef file
+  aMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWD_INTERBEEFTRAIT, pMap);
+  aMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWM_INTERBEEFTRAIT, pMap);
 
 
   //Time tracking

@@ -29,6 +29,22 @@ public:
   static const unsigned COUNTRY_CODE_LENGTH;
   // string that corresponds to all letters
   static const char LETTERS[];
+  // string corresponding to breed Limouusin interbeef
+  static const char LM_INTERBEEFBREED[];
+  // string corresponding to breed Charolais interbeef
+  static const char CH_INTERBEEFBREED[];
+  // string corresponding to breed Simmental interbeef
+  static const char SM_INTERBEEFBREED[];
+  // string corresponding to breed Angus interbeef
+  static const char AN_INTERBEEFBREED[];
+  // string corresponding to breed Hereford interbeef
+  static const char HH_INTERBEEFBREED[];
+  // string corresponding to trait weaning weight direct interbeef
+  static const char WWD_INTERBEEFTRAIT[];
+  // string corresponding to trait weaning weight maternal interbeef
+  static const char WWM_INTERBEEFTRAIT[];
+
+
 
 
 

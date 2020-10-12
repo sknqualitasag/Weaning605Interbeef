@@ -203,7 +203,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
 
   datafile.setf(ios::skipws);
   string sep(" ");
-  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr;
+  string indnumstr, sirenumstr, damnumstr, birthyearstr, itbidstr, inputStr, indstr, indbreedstr, indactivstr, indhbstr, inditbbreedstr, damstr, sirestr, sexstr;
   Tokenizer colData;
   unsigned lineNumber=0, numCols, newAnimalsCounter=0, rec = 0, replaceAnimalsCounter = 0;
 
@@ -233,7 +233,12 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     indhbstr = colData[9];
     inditbbreedstr = colData[10];
 
+    sexstr=getSexWithITBid(itbidstr);
+
     if(indbreedstr == CONSTANTS::STRING_NA){
+      continue;
+    }
+    if(sexstr == CONSTANTS::STRING_NA){
       continue;
     }
 
@@ -249,7 +254,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     }
 
     //new animal record
-    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, CONSTANTS::STRING_NA, CONSTANTS::STRING_NA, CONSTANTS::STRING_NA, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), CONSTANTS::STRING_NA, CONSTANTS::STRING_NA);
+    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, CONSTANTS::STRING_NA, CONSTANTS::STRING_NA, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), CONSTANTS::STRING_NA, CONSTANTS::STRING_NA);
 
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
@@ -290,6 +295,23 @@ string animalMap::verifyBreed(string breedstr, string indstr){
   else{
     return CONSTANTS::STRING_NA;
   }
+
+}
+
+
+string animalMap::getSexWithITBid(string itbidstr){
+
+  string sexstr;
+
+  if(itbidstr != CONSTANTS::STRING_NA){
+    sexstr = itbidstr.substr(5,1);
+  }
+
+  if(sexstr != "M" || sexstr != "F"){
+    sexstr = CONSTANTS::STRING_NA;
+  }
+
+  return sexstr;
 
 }
 
@@ -383,5 +405,50 @@ void animalMap::mergeInfoMaps(animalMap &aMap){
     }
 
   }
+
+}
+
+
+void animalMap::outputInterbeef605(string psBreed, string psTrait, animalMap &pMap){
+
+  string itbBreed=convertBreed2InterbullBreed(psBreed);
+
+  cout<<"\noutputInterbeef605(): WRITING 605-FILE FOR "<<itbBreed<<" AND "<<psTrait<<endl;
+  cout<<"*****************************************************************"<< endl;
+
+
+  ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
+
+  for(map<string,animal*>::iterator it = this->begin();it != this->end(); it++){
+
+    animal *aPtr =(*it).second;
+
+//    if(aPtr->indBreedStr == psBreed){
+//      if(purgeBloodcomposite(aPtr->animIDStr, psBreed)){
+//        if(psTrait == CONSTANTS::WW_INTERBEEFTRAIT){
+//          if(aPtr->weaningWeightInt != CONSTANTS::INT_NA && aPtr->birthWeightInt!= CONSTANTS::INT_NA && aPtr->ageAtWeaningInDays!= CONSTANTS::INT_NA){
+//            datafile601<<aPtr->itbIDStr<<endl;
+//            outputDebug("outputInterbeef601()_Animal "+ aPtr->indStr + " has itbIDStr " + aPtr->itbIDStr + " and has trait " + CONSTANTS::WW_INTERBEEFTRAIT + " for breed  " + psBreed, aPtr->indStr);
+//          }
+//        }
+//
+//      }
+//
+//    }
+//
+  }
+
+}
+
+
+string animalMap::convertBreed2InterbullBreed(string psBreed){
+
+  if(psBreed == "AN") return("AAN");
+  else if(psBreed == "CH") return("CHA");
+  else if(psBreed == "HH") return("HER");
+  else if(psBreed == "LM") return("LIM");
+  else if(psBreed == "SI") return("SIM");
+  else return("XXX");
+
 
 }
