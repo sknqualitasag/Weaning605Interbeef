@@ -395,7 +395,7 @@ string animalMap::getSexWithITBid(string itbidstr){
     sexstr = itbidstr.substr(5,1);
   }
 
-  if(sexstr != "M" || sexstr != "F"){
+  if(sexstr != "M"){
     sexstr = CONSTANTS::STRING_NA;
   }
 
