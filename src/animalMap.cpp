@@ -391,6 +391,7 @@ string animalMap::getSexWithITBid(string itbidstr){
   string sexstr;
 
   if(itbidstr != CONSTANTS::STRING_NA){
+    cout<<"itbidstr: "<<itbidstr<<" substr(5,1) "<<itbidstr.substr(5,1)<<endl;
     sexstr = itbidstr.substr(5,1);
   }
 
