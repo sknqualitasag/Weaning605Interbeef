@@ -411,8 +411,6 @@ void animalMap::mergeInfoMaps(animalMap &aMap){
 
 void animalMap::outputInterbeef605(string psBreed, string psTrait){
 
-  string itbBreed=convertBreed2InterbullBreed(psBreed);
-
   cout<<"\noutputInterbeef605(): WRITING 605-FILE FOR "<<itbBreed<<" AND "<<psTrait<<endl;
   cout<<"*****************************************************************"<< endl;
 
