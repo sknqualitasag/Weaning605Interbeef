@@ -415,8 +415,5 @@ void animalMap::outputInterbeef605(string psBreed, string psTrait){
   cout<<"*****************************************************************"<< endl;
 
 
-  ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
-
-
 }
 
