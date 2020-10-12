@@ -34,8 +34,6 @@ public:
 
   void inputData(string dataFile);
 
-  void outputInterbeef605(string psBreed, string psTrait);
-
 
 
 
