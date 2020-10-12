@@ -313,9 +313,11 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     sexstr=getSexWithITBid(itbidstr);
 
     if(indbreedstr == CONSTANTS::STRING_NA){
+      cout<<"if-statement: indbreedstr "<<indbreedstr<<" of "<<indstr<<endl;
       continue;
     }
     if(sexstr == CONSTANTS::STRING_NA){
+      cout<<"if-statement: sexstr "<<sexstr<<" of "<<indstr<<endl;
       continue;
     }
 
