@@ -32,7 +32,7 @@ public:
   date birthdate;
 
   animal(string indstr, string traitname, double acc, string psRunningMode);
-  animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, long int indDbId, long int damDbId, long int sireDbId, string psRunningMode);
+  animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr, string psRunningMode);
 
   void constructorDebug(string message, string tvdid, string psRunningMode);
 
