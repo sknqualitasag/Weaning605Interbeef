@@ -333,7 +333,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     string psRunningMode = getRunningMode();
 
     //new animal record
-    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, atoi(indnumstr.c_str()), atoi(damnumstr.c_str()), atoi(sirenumstr.c_str()), psRunningMode);
+    animal *aPtr = new animal(indstr, indbreedstr, indbirthdate, itbidstr, sexstr, indactivstr, indhbstr, inditbbreedstr, indnumstr, damnumstr, sirenumstr, psRunningMode);
 
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
