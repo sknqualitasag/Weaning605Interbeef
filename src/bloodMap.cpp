@@ -73,6 +73,7 @@ void bloodMap::makeReadableBloodComposite(string bloodFile, string bloodFileRefo
 
     //Extract field animalID of the line
     indnumstr = colData[0];
+    simpleDebug("makeReadableBloodComposite()_numCols are " + to_string(numCols), indnumstr);
 
     //Extract field of the line containing breed and blood composite
     numberOfBreed = (numCols - 1)/numberElementPerBreed;
@@ -82,9 +83,11 @@ void bloodMap::makeReadableBloodComposite(string bloodFile, string bloodFileRefo
     //Build BloodComposite-Map for an animalID
     for(int i = 1; i<= numberOfBreed; i++){
       bPtr->BloodComposite[colData[(i-1)*numberElementPerBreed+1]] = stoi(colData[i*numberElementPerBreed]);
+      simpleDebug("makeReadableBloodComposite()_breedcode is " + colData[(i-1)*numberElementPerBreed+1] + " and bloodcomposite is " + colData[i*numberElementPerBreed], indnumstr);
     }
 
     (*this)[indnumstr] = bPtr;
+    simpleDebug("makeReadableBloodComposite()_Insert BloodComposite-Map ", indnumstr);
   }
 
   datafile.close();
@@ -92,4 +95,28 @@ void bloodMap::makeReadableBloodComposite(string bloodFile, string bloodFileRefo
   cout<<"Read "<<lineNumber<<" lines"<<endl;
 
 
+}
+
+
+
+// setter for running mode
+void bloodMap::setRunningMode(string psRunningMode){
+  runningMode = psRunningMode;
+
+}
+
+
+// getter for running mode
+string bloodMap::getRunningMode(){
+  return runningMode;
+}
+
+
+// simple debug File
+void bloodMap::simpleDebug(string message, string tvdid){
+  string localRunningMode = getRunningMode();
+  if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
+    //here Develop-Output-Logfile
+    LOGD <<"Message "<<message<<" of animal "<<tvdid;
+  }
 }

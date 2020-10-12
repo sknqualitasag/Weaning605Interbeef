@@ -18,6 +18,11 @@ public:
   bloodMap(void);
   void makeReadableBloodComposite(string bloodFile, string bloodFileReformattted);
 
+  void setRunningMode(string psRunningMode);
+  string getRunningMode();
+  void simpleDebug(string message, string tvdid);
+
+
 };
 
 #endif

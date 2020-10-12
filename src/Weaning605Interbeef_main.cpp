@@ -8,7 +8,6 @@
 #include "animalMap.h"
 #include "bloodMap.h"
 #include "constant.h"
-#include "sireMap.h"
 
 
 
@@ -44,25 +43,42 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   std::string bloodFileReformattted	          = bloodFile+".reformatted";
   std::string pedigreeFile							      = parmMap.getString("pedigreeFileName");
   std::string pedigreeFileReformatted     	  = pedigreeFile+".reformatted";
+  std::string parRunMode                      = parmMap.getString("DEBUG");
+  std::string parRunModeFile                  = parmMap.getString("DEBUGFile");
+
+
 
   animalMap aMap;
   animalMap pMap;
 
+  //Sophie: Falls Fehler auftretten oder als Hilfe für die Entwicklung
+  if (parRunMode == CONSTANTS::DEBUG){
+    plog::init(plog::debug, "DEBUG_Weaning605Interbeef_Output.txt"); //Sophie
+    aMap.setRunningMode(CONSTANTS::RUNNING_DEBUG);
+    aMap.inputDebug(parRunModeFile);
+  }
+  else if(parRunMode == CONSTANTS::DEBUGALL){
+    plog::init(plog::debug, "DEBUG_Weaning605Interbeef_Output.txt"); //Sophie
+    aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+  }
+  else {
+    aMap.setRunningMode(CONSTANTS::RUNNING_ROUTINE);
+  }
+
   //Read blood composite file
   bloodMap bMap;
+  bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
   aMap.BreedComposite = bMap;
 
-  //Read pedigree file
-  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
-  pMap.readRRTDMPedigree(pedigreeFileReformatted);
-  pMap.mergeInfoMaps(aMap);
+//  //Read pedigree file
+//  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
+//  pMap.readRRTDMPedigree(pedigreeFileReformatted);
+//
+//  //Read data file
+//  aMap.inputData(dataFile);
 
-  //Read data file
-  aMap.inputData(dataFile);
-
-  //Create a new map
-  sireMap sMap;
+  //Create a sire map
 
   //Prepare 605 Interbeef file
 

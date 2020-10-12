@@ -29,6 +29,16 @@ public:
   static const unsigned COUNTRY_CODE_LENGTH;
   // string that corresponds to all letters
   static const char LETTERS[];
+  // string corresponding to debuging
+  static const char DEBUG[];
+  //' string corresponding to debuging all animal
+  static const char DEBUGALL[];
+  // string corresponding to running debug
+  static const char RUNNING_DEBUG[];
+  // string corresponding to running debug all animal
+  static const char RUNNING_DEBUGALL[];
+  // string corresponding to running routine
+  static const char RUNNING_ROUTINE[];
   // string corresponding to breed Limouusin interbeef
   static const char LM_INTERBEEFBREED[];
   // string corresponding to breed Charolais interbeef

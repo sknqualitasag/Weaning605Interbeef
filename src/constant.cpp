@@ -23,6 +23,16 @@ const unsigned CONSTANTS::BREED_COUNTRY_SEX_CODE_LENGTH = 7;
 const unsigned CONSTANTS::COUNTRY_CODE_LENGTH = 2;
 //' all letters in a string
 const char CONSTANTS::LETTERS[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//' string corresponding to debuging
+const char CONSTANTS::DEBUG[] = "ja";
+//' string corresponding to debuging all animal
+const char CONSTANTS::DEBUGALL[] = "alle";
+// string corresponding to running debug
+const char CONSTANTS::RUNNING_DEBUG[] = "debug";
+// string corresponding to running debug all animal
+const char CONSTANTS::RUNNING_DEBUGALL[] = "alle";
+// string corresponding to running routine
+const char CONSTANTS::RUNNING_ROUTINE[] = "routine";
 // string corresponding to breed Limouusin interbeef
 const char CONSTANTS::LM_INTERBEEFBREED[] = "LI";
 // string corresponding to breed Charolais interbeef

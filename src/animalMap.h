@@ -23,12 +23,20 @@ class animalMap : public map<string,animal*> {
 
 public:
 
+  void setRunningMode(string psRunningMode);
+  string getRunningMode();
+  void inputDebug(string psRunModeFile);
+  void outputDebug(string message, string tvdid);
+  string runningMode;
+  void simpleDebug(string message, string tvdid);
+  // list of TVD-Ids for which we want to output debugging information
+  vector <string> debugTvdIds;
+
   bloodMap BreedComposite;
 
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
   void readRRTDMPedigree(string pedfileName);
   unsigned maxid=0;//the maximum id found in pedigree
-  void mergeInfoMaps(animalMap &aMap);
   string verifyBreed(string breedstr, string indstr);
   string getSexWithITBid(string itbidstr);
 
