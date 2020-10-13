@@ -69,7 +69,11 @@ void sireMap::outputInterbeef605(string psBreed, string parInterbeefTraitName){
 
     if(sPtr->indBreedStr == psBreed){
 
+      simpleDebug("outputInterbeef605()_breed " + sPtr->indBreedStr +" of sireID "+sPtr->indDbIdStr, sPtr->indStr);
+
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
+
+        simpleDebug("outputInterbeef605()_write sireID "+sPtr->indDbIdStr+" in 605-file", sPtr->indStr);
 
         datafile605 <<setw(3)<<"605"
                     <<setw(4)<<sPtr->inditbbreedStr
@@ -105,12 +109,15 @@ bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
   map<string, blood*>::iterator bit=BreedComposite.find(indDbIdStr);
   if(bit != BreedComposite.end()){
     if(bit->second->BloodComposite[parBreedName] < CONSTANTS::MIN_BLOOD_CONTENT){
+      simpleDebug("purgeBloodcomposite()_parBreedName " + parBreedName + " ,bloodComposite to low "+ to_string(bit->second->BloodComposite[parBreedName]), indDbIdStr);
       return false;
     }else{
       return true;
+      simpleDebug("purgeBloodcomposite()_parBreedName " + parBreedName + " ,bloodComposite respect the minimum "+ to_string(bit->second->BloodComposite[parBreedName]), indDbIdStr);
     }
   }else{
     return false;
+    simpleDebug("purgeBloodcomposite()_breedComposite doesn't countain", indDbIdStr);
   }
 
 }

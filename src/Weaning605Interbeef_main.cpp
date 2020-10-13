@@ -73,11 +73,11 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   sMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   sMap.mergeAllInputs(aMap, pMap);
 
-//  //Output 605 Interbeef file
-//  sMap.outputInterbeef605(CONSTANTS::AN_INTERBEEFBREED,parInterbeefTraitName);
-//  sMap.outputInterbeef605(CONSTANTS::CH_INTERBEEFBREED,parInterbeefTraitName);
-//  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,parInterbeefTraitName);
-//  sMap.outputInterbeef605(CONSTANTS::SM_INTERBEEFBREED,parInterbeefTraitName);
+  //Output 605 Interbeef file
+  sMap.outputInterbeef605(CONSTANTS::AN_INTERBEEFBREED,parInterbeefTraitName);
+  sMap.outputInterbeef605(CONSTANTS::CH_INTERBEEFBREED,parInterbeefTraitName);
+  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,parInterbeefTraitName);
+  sMap.outputInterbeef605(CONSTANTS::SM_INTERBEEFBREED,parInterbeefTraitName);
 
 
   //Time tracking
