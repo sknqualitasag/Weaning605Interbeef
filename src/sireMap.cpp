@@ -112,12 +112,12 @@ bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
       simpleDebug("purgeBloodcomposite()_parBreedName " + parBreedName + " ,bloodComposite to low "+ to_string(bit->second->BloodComposite[parBreedName]), indDbIdStr);
       return false;
     }else{
-      return true;
       simpleDebug("purgeBloodcomposite()_parBreedName " + parBreedName + " ,bloodComposite respect the minimum "+ to_string(bit->second->BloodComposite[parBreedName]), indDbIdStr);
+      return true;
     }
   }else{
-    return false;
     simpleDebug("purgeBloodcomposite()_breedComposite doesn't countain", indDbIdStr);
+    return false;
   }
 
 }
