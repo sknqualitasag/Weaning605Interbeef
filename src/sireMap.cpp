@@ -38,38 +38,12 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
     // itTVD found in aMap
     if(itTVD != aMap.end()){
 
-      cout<<"pit->second->indStr "<<pit->second->indStr<<endl;
-      cout<<"pit->second->traitStr "<<pit->second->traitStr<<endl;
-      cout<<"pit->second->accDbl "<<pit->second->accDbl<<endl;
-      cout<<"pit->second->indBreedStr "<<pit->second->indBreedStr<<endl;
-      cout<<"pit->second->itbidStr "<<pit->second->itbidStr<<endl;
-      cout<<"pit->second->sexBirthStr "<<pit->second->sexBirthStr<<endl;
-      cout<<"pit->second->inditbbreedStr "<<pit->second->inditbbreedStr<<endl;
-      cout<<"pit->second->indDbIdStr "<<pit->second->indDbIdStr<<endl;
-
-      cout<<"itTVD->second->indStr "<<itTVD->second->indStr<<endl;
-      cout<<"itTVD->second->traitStr "<<itTVD->second->traitStr<<endl;
-      cout<<"itTVD->second->accDbl "<<itTVD->second->accDbl<<endl;
-      cout<<"itTVD->second->indBreedStr "<<itTVD->second->indBreedStr<<endl;
-      cout<<"itTVD->second->itbidStr "<<itTVD->second->itbidStr<<endl;
-      cout<<"itTVD->second->sexBirthStr "<<itTVD->second->sexBirthStr<<endl;
-      cout<<"itTVD->second->inditbbreedStr "<<itTVD->second->inditbbreedStr<<endl;
-      cout<<"itTVD->second->indDbIdStr "<<itTVD->second->indDbIdStr<<endl;
-
       // new sire record
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, pit->second->indBreedStr, pit->second->birthdate, pit->second->itbidStr, pit->second->sexBirthStr, pit->second->inditbbreedStr, pit->second->indDbIdStr, pit->second->damDbIdStr, pit->second->sireDbIdStr);
 
       (*this)[itTVD->second->indDbIdStr] = sPtr;
 
-      cout<<"***"<<endl;
-      cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
-      cout<<"sPtr->traitStr "<<sPtr->traitStr<<endl;
-      cout<<"sPtr->accDbl "<<sPtr->accDbl<<endl;
-      cout<<"sPtr->indBreedStr "<<sPtr->indBreedStr<<endl;
-      cout<<"sPtr->itbidStr "<<sPtr->itbidStr<<endl;
-      cout<<"sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
-      cout<<"sPtr->inditbbreedStr "<<sPtr->inditbbreedStr<<endl;
-      cout<<"sPtr->sexBirthStr "<<sPtr->sexBirthStr<<endl;
+      simpleDebug("mergeAllInputs()_Insert sireMap ", itTVD->second->indDbIdStr);
 
 
     }
@@ -140,4 +114,27 @@ bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
     return false;
   }
 
+}
+
+
+// setter for running mode
+void bloodMap::setRunningMode(string psRunningMode){
+  runningMode = psRunningMode;
+
+}
+
+
+// getter for running mode
+string bloodMap::getRunningMode(){
+  return runningMode;
+}
+
+
+// simple debug File
+void bloodMap::simpleDebug(string message, string tvdid){
+  string localRunningMode = getRunningMode();
+  if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
+    //here Develop-Output-Logfile
+    LOGD <<"Message "<<message<<" of animal "<<tvdid;
+  }
 }
