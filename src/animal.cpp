@@ -25,11 +25,6 @@ using namespace std;
 
 animal::animal(string indstr, string traitname, double acc, string psRunningMode){
 
-  indDbIdStr = CONSTANTS::INT_NA;
-  damDbIdStr = CONSTANTS::INT_NA;
-  sireDbIdStr = CONSTANTS::INT_NA;
-  itbidStr = CONSTANTS::STRING_NA;
-
   indStr = indstr;
   constructorDebug("constructor animal()_Constructor called with indStr", indStr, psRunningMode);
   traitStr = traitname;

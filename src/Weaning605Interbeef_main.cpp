@@ -60,9 +60,10 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
   sMap.BreedComposite = bMap;
 
-//  //Read data file
-//  aMap.inputData(dataFile);
-//
+  //Read data file
+  aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+  aMap.inputData(dataFile);
+
 //  //Read pedigree file
 //  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
 //  pMap.readRRTDMPedigree(pedigreeFileReformatted);
