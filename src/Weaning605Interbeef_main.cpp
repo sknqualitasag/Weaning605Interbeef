@@ -85,7 +85,6 @@ int Weaning605Interbeef_main(std::string paramFileName) {
 
   //Prepare 605 Interbeef file
   sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWD_INTERBEEFTRAIT);
-  //sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWM_INTERBEEFTRAIT);
 
 
   //Time tracking

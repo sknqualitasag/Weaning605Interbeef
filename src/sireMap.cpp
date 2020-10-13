@@ -68,6 +68,7 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
   for(map<string,sire*>::iterator it = this->begin();it != this->end(); it++){
     sire *sPtr =(*it).second;
 
+    cout <<"before_purgeBloodcomposite_ sPtr->indBreedStr"<<sPtr->indBreedStr<<" and psBreed "<<psBreed<<endl;
     if(sPtr->indBreedStr == psBreed){
       cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
       cout<<"before_purgeBloodcomposite_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
@@ -109,6 +110,7 @@ string sireMap::convertBreed2InterbullBreed(string psBreed){
 bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
 
   map<string, blood*>::iterator bit=BreedComposite.find(indDbIdStr);
+  cout<<"bit: "<<bit->first<<endl;
   cout<<"bit->second->BloodComposite[parBreedName]: "<<bit->second->BloodComposite[parBreedName]<<endl;
   if(bit != BreedComposite.end()){
     cout<<"found ID in bit "<<bit->first<<endl;
