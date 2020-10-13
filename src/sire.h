@@ -15,7 +15,9 @@ public:
   double accDbl;
   date birthdate;
 
-  sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr);
+  sire(string indstr, string traitname, double acc, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr, string psRunningMode);
+
+  void constructorDebug(string message, string tvdid, string psRunningMode);
 
 };
 

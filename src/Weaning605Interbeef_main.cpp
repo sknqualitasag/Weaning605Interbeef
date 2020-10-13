@@ -69,9 +69,10 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
 
-//  //Create a sire map
-//  sMap.mergeAllInputs(aMap, pMap);
-//
+  //Create a sire map
+  sMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+  sMap.mergeAllInputs(aMap, pMap);
+
 //  //Output 605 Interbeef file
 //  sMap.outputInterbeef605(CONSTANTS::AN_INTERBEEFBREED,parInterbeefTraitName);
 //  sMap.outputInterbeef605(CONSTANTS::CH_INTERBEEFBREED,parInterbeefTraitName);

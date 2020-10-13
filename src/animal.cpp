@@ -65,7 +65,7 @@ animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbi
 }
 
 
-// simple debug File
+// constructor debug File
 void animal::constructorDebug(string message, string tvdid, string psRunningMode){
   string localRunningMode = psRunningMode;
   if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
