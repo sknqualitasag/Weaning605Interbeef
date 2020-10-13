@@ -110,6 +110,7 @@ void animalMap::To_out(){
 
   for(map<string, animal*>::iterator it=begin();it!=end();it++){
     animal *ptr = (*it).second;
+    cout<<"ptr->indStr "<<ptr->indStr<<", ptr->indBreedStr "<<ptr->indBreedStr<<", ptr->indDbIdStr "<<ptr->indDbIdStr<<", ptr->itbidStr "<<ptr->itbidStr <<endl;
   }
 }
 
