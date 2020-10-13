@@ -49,9 +49,9 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
       // new sire record
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, pit->second->indBreedStr, pit->second->birthdate, pit->second->itbidStr, pit->second->sexBirthStr, pit->second->inditbbreedStr, pit->second->indDbIdStr, pit->second->damDbIdStr, pit->second->sireDbIdStr);
 
-      cout<<"key of sireMap itTVD->second->indDbIdStr: "<<itTVD->second->indDbIdStr<<endl;
+      cout<<"key of sireMap itTVD->second->indDbIdStr: "<<pit->second->indDbIdStr<<endl;
 
-      (*this)[itTVD->second->indDbIdStr] = sPtr;
+      (*this)[pit->second->indDbIdStr] = sPtr;
 
       cout<<"mergeAllInputs_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
       cout<<"mergeAllInputs_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
