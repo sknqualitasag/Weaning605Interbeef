@@ -34,7 +34,7 @@ const char CONSTANTS::RUNNING_DEBUGALL[] = "alle";
 // string corresponding to running routine
 const char CONSTANTS::RUNNING_ROUTINE[] = "routine";
 // string corresponding to breed Limouusin interbeef
-const char CONSTANTS::LM_INTERBEEFBREED[] = "LI";
+const char CONSTANTS::LM_INTERBEEFBREED[] = "LM";
 // string corresponding to breed Charolais interbeef
 const char CONSTANTS::CH_INTERBEEFBREED[] = "CH";
 // string corresponding to breed Simmental interbeef
