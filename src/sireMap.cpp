@@ -38,6 +38,24 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
     // itTVD found in aMap
     if(itTVD != aMap.end()){
 
+      cout<<"pit->second->indStr "<<pit->second->indStr<<endl;
+      cout<<"pit->second->traitStr "<<pit->second->traitStr<<endl;
+      cout<<"pit->second->accDbl "<<pit->second->accDbl<<endl;
+      cout<<"pit->second->indBreedStr "<<pit->second->indBreedStr<<endl;
+      cout<<"pit->second->itbidStr "<<pit->second->itbidStr<<endl;
+      cout<<"pit->second->sexBirthStr "<<pit->second->sexBirthStr<<endl;
+      cout<<"pit->second->inditbbreedStr "<<pit->second->inditbbreedStr<<endl;
+      cout<<"pit->second->indDbIdStr "<<pit->second->indDbIdStr<<endl;
+
+      cout<<"itTVD->second->indStr "<<itTVD->second->indStr<<endl;
+      cout<<"itTVD->second->traitStr "<<itTVD->second->traitStr<<endl;
+      cout<<"itTVD->second->accDbl "<<itTVD->second->accDbl<<endl;
+      cout<<"itTVD->second->indBreedStr "<<itTVD->second->indBreedStr<<endl;
+      cout<<"itTVD->second->itbidStr "<<itTVD->second->itbidStr<<endl;
+      cout<<"itTVD->second->sexBirthStr "<<itTVD->second->sexBirthStr<<endl;
+      cout<<"itTVD->second->inditbbreedStr "<<itTVD->second->inditbbreedStr<<endl;
+      cout<<"itTVD->second->indDbIdStr "<<itTVD->second->indDbIdStr<<endl;
+
       // new sire record
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, itTVD->second->indBreedStr, itTVD->second->birthdate, itTVD->second->itbidStr, itTVD->second->sexBirthStr, itTVD->second->inditbbreedStr, itTVD->second->indDbIdStr, itTVD->second->damDbIdStr, itTVD->second->sireDbIdStr);
 
