@@ -49,10 +49,6 @@ public:
   static const char AN_INTERBEEFBREED[];
   // string corresponding to breed Hereford interbeef
   static const char HH_INTERBEEFBREED[];
-  // string corresponding to trait weaning weight direct interbeef
-  static const char WWD_INTERBEEFTRAIT[];
-  // string corresponding to trait weaning weight maternal interbeef
-  static const char WWM_INTERBEEFTRAIT[];
   //' min blood component of a breed
   static const unsigned MIN_BLOOD_CONTENT;
 

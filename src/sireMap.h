@@ -19,7 +19,7 @@ public:
 
   sireMap(void);
   void mergeAllInputs(animalMap &aMap, animalMap &pMap);
-  void outputInterbeef605(string psBreed, string psTrait);
+  void outputInterbeef605(string psBreed, string parInterbeefTraitName);
   string convertBreed2InterbullBreed(string psBreed);
   bool purgeBloodcomposite(string indDbIdStr, string parBreedName);
   bloodMap BreedComposite;

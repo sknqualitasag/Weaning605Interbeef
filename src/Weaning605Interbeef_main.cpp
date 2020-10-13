@@ -46,7 +46,7 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   std::string pedigreeFileReformatted     	  = pedigreeFile+".reformatted";
   std::string parRunMode                      = parmMap.getString("DEBUG");
   std::string parRunModeFile                  = parmMap.getString("DEBUGFile");
-
+  std::string parInterbeefTraitName           = parmMap.getString("InterbeefTraitName");
 
 
   animalMap aMap;
@@ -61,12 +61,12 @@ int Weaning605Interbeef_main(std::string paramFileName) {
 
   //Sophie: Falls Fehler auftretten oder als Hilfe für die Entwicklung
   if (parRunMode == CONSTANTS::DEBUG){
-    plog::init(plog::debug, "DEBUG_Weaning605Interbeef_Output.txt"); //Sophie
+    plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt"); //Sophie
     aMap.setRunningMode(CONSTANTS::RUNNING_DEBUG);
     aMap.inputDebug(parRunModeFile);
   }
   else if(parRunMode == CONSTANTS::DEBUGALL){
-    plog::init(plog::debug, "DEBUG_Weaning605Interbeef_Output.txt"); //Sophie
+    plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt"); //Sophie
     aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   }
   else {
@@ -83,8 +83,8 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   //Create a sire map
   sMap.mergeAllInputs(aMap, pMap);
 
-  //Prepare 605 Interbeef file
-  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWD_INTERBEEFTRAIT);
+  //Output 605 Interbeef file
+  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,parInterbeefTraitName);
 
 
   //Time tracking

@@ -43,10 +43,6 @@ const char CONSTANTS::SM_INTERBEEFBREED[] = "SI";
 const char CONSTANTS::AN_INTERBEEFBREED[] = "AN";
 // string corresponding to breed Hereford interbeef
 const char CONSTANTS::HH_INTERBEEFBREED[] = "HH";
-// string corresponding to trait weaning weight direct interbeef
-const char CONSTANTS::WWD_INTERBEEFTRAIT[] = "AWWD";
-// string corresponding to trait weaning weight maternal interbeef
-const char CONSTANTS::WWM_INTERBEEFTRAIT[] = "AWWM";
 //' min blood component of a breed
 const unsigned CONSTANTS::MIN_BLOOD_CONTENT = 875;
 

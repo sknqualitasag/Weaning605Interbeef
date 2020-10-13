@@ -31,14 +31,6 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
   cout<<"\nmergeAllInputs(): mergeAllInputs in sireMap "<<endl;
   cout<<"*****************************************************************"<< endl;
 
-  cout<<"\nTo_out() of aMap"<<endl;
-  aMap.To_out();
-  cout<<"*****************************************************************"<< endl;
-  cout<<"\nTo_out() of pMap"<<endl;
-  pMap.To_out();
-  cout<<"*****************************************************************"<< endl;
-
-
   //pMap ist mit numerischeID Tier.
   for(map<string,animal*>::iterator pit = pMap.begin(); pit != pMap.end();  pit++){
     //aMap ist mit den TVD-ID von Tier aufgebaut.
@@ -49,56 +41,37 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
       // new sire record
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, pit->second->indBreedStr, pit->second->birthdate, pit->second->itbidStr, pit->second->sexBirthStr, pit->second->inditbbreedStr, pit->second->indDbIdStr, pit->second->damDbIdStr, pit->second->sireDbIdStr);
 
-      cout<<"key of sireMap itTVD->second->indDbIdStr: "<<pit->second->indDbIdStr<<endl;
-
       (*this)[pit->second->indDbIdStr] = sPtr;
-
-      cout<<"mergeAllInputs_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
-      cout<<"mergeAllInputs_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
-
-
 
     }
 
   }
 
-  cout<<"\nTo_out() of sMap"<<endl;
-  this->To_out();
-  cout<<"*****************************************************************"<< endl;
-
-
 }
 
 
-void sireMap::outputInterbeef605(string psBreed, string psTrait){
+void sireMap::outputInterbeef605(string psBreed, string parInterbeefTraitName){
 
   string itbBreed=convertBreed2InterbullBreed(psBreed);
 
 
-  cout<<"\noutputInterbeef605(): WRITING INTERBEEF DATA-FILE FOR "<<itbBreed<<" AND "<<psTrait<<endl;
+  cout<<"\noutputInterbeef605(): WRITING INTERBEEF DATA-FILE FOR "<<itbBreed<<" AND "<<parInterbeefTraitName<<endl;
   cout<<"*****************************************************************"<< endl;
 
-  ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
+  ofstream datafile605("datafile605_"+itbBreed+"_"+parInterbeefTraitName);
 
   for(map<string,sire*>::iterator it = this->begin();it != this->end(); it++){
     sire *sPtr =(*it).second;
 
-    cout <<"before_purgeBloodcomposite_ sPtr->indBreedStr"<<sPtr->indBreedStr<<" and psBreed "<<psBreed<<endl;
     if(sPtr->indBreedStr == psBreed){
-      cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
-      cout<<"before_purgeBloodcomposite_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
 
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
-
-        cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
-        cout<<"sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
-        cout<<"sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
 
         datafile605 <<setw(3)<<"605"
                     <<setw(20)<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)
                     <<setw(3)<<sPtr->accDbl*100
                     <<setw(3)<<"00"
-                    <<setw(4)<<"CHE";
+                    <<setw(4)<<"CHE"<<endl;
 
       }
 
@@ -125,19 +98,13 @@ string sireMap::convertBreed2InterbullBreed(string psBreed){
 bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
 
   map<string, blood*>::iterator bit=BreedComposite.find(indDbIdStr);
-  cout<<"bit: "<<bit->first<<endl;
-  cout<<"bit->second->BloodComposite[parBreedName]: "<<bit->second->BloodComposite[parBreedName]<<endl;
   if(bit != BreedComposite.end()){
-    cout<<"found ID in bit "<<bit->first<<endl;
     if(bit->second->BloodComposite[parBreedName] < CONSTANTS::MIN_BLOOD_CONTENT){
-      cout<<"bit->second->BloodComposite[parBreedName] bellow 875: "<<bit->second->BloodComposite[parBreedName]<<endl;
       return false;
     }else{
-      cout<<"bit->second->BloodComposite[parBreedName] above 875: "<<bit->second->BloodComposite[parBreedName]<<endl;
       return true;
     }
   }else{
-    cout<<"not found ID in bit "<<bit->first<<endl;
     return false;
   }
 
