@@ -28,6 +28,7 @@ public:
   void setRunningMode(string psRunningMode);
   string getRunningMode();
   void simpleDebug(string message, string tvdid);
+  void To_out();
 
 
 };

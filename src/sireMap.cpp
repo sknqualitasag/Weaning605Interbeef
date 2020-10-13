@@ -49,6 +49,8 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
       // new sire record
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, pit->second->indBreedStr, pit->second->birthdate, pit->second->itbidStr, pit->second->sexBirthStr, pit->second->inditbbreedStr, pit->second->indDbIdStr, pit->second->damDbIdStr, pit->second->sireDbIdStr);
 
+      cout<<"key of sireMap itTVD->second->indDbIdStr: "<<itTVD->second->indDbIdStr<<endl;
+
       (*this)[itTVD->second->indDbIdStr] = sPtr;
 
       cout<<"mergeAllInputs_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
@@ -59,6 +61,11 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
     }
 
   }
+
+  cout<<"\nTo_out() of sMap"<<endl;
+  this->To_out();
+  cout<<"*****************************************************************"<< endl;
+
 
 }
 
@@ -156,5 +163,16 @@ void sireMap::simpleDebug(string message, string tvdid){
   if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
     //here Develop-Output-Logfile
     LOGD <<"Message "<<message<<" of animal "<<tvdid;
+  }
+}
+
+
+void sireMap::To_out(){
+  cout<<"\nTo_out()"<<endl;
+  cout<<"*****************************************************************"<< endl;
+
+  for(map<string, sire*>::iterator it=begin();it!=end();it++){
+    sire *ptr = (*it).second;
+    cout<<"ptr->indStr "<<ptr->indStr<<", ptr->indBreedStr "<<ptr->indBreedStr<<", ptr->indDbIdStr "<<ptr->indDbIdStr<<", ptr->itbidStr "<<ptr->itbidStr <<endl;
   }
 }
