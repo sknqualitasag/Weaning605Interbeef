@@ -44,50 +44,37 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   std::string bloodFileReformattted	          = bloodFile+".reformatted";
   std::string pedigreeFile							      = parmMap.getString("pedigreeFileName");
   std::string pedigreeFileReformatted     	  = pedigreeFile+".reformatted";
-  std::string parRunMode                      = parmMap.getString("DEBUG");
-  std::string parRunModeFile                  = parmMap.getString("DEBUGFile");
   std::string parInterbeefTraitName           = parmMap.getString("InterbeefTraitName");
 
 
   animalMap aMap;
   animalMap pMap;
   sireMap sMap;
+  bloodMap bMap;
+
+  //Debugging-File
+  plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt");
 
   //Read blood composite file
-  bloodMap bMap;
   bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
   sMap.BreedComposite = bMap;
 
-  //Sophie: Falls Fehler auftretten oder als Hilfe für die Entwicklung
-  if (parRunMode == CONSTANTS::DEBUG){
-    plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt"); //Sophie
-    aMap.setRunningMode(CONSTANTS::RUNNING_DEBUG);
-    aMap.inputDebug(parRunModeFile);
-  }
-  else if(parRunMode == CONSTANTS::DEBUGALL){
-    plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt"); //Sophie
-    aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
-  }
-  else {
-    aMap.setRunningMode(CONSTANTS::RUNNING_ROUTINE);
-  }
-
-  //Read data file
-  aMap.inputData(dataFile);
-
-  //Read pedigree file
-  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
-  pMap.readRRTDMPedigree(pedigreeFileReformatted);
-
-  //Create a sire map
-  sMap.mergeAllInputs(aMap, pMap);
-
-  //Output 605 Interbeef file
-  sMap.outputInterbeef605(CONSTANTS::AN_INTERBEEFBREED,parInterbeefTraitName);
-  sMap.outputInterbeef605(CONSTANTS::CH_INTERBEEFBREED,parInterbeefTraitName);
-  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,parInterbeefTraitName);
-  sMap.outputInterbeef605(CONSTANTS::SM_INTERBEEFBREED,parInterbeefTraitName);
+//  //Read data file
+//  aMap.inputData(dataFile);
+//
+//  //Read pedigree file
+//  pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
+//  pMap.readRRTDMPedigree(pedigreeFileReformatted);
+//
+//  //Create a sire map
+//  sMap.mergeAllInputs(aMap, pMap);
+//
+//  //Output 605 Interbeef file
+//  sMap.outputInterbeef605(CONSTANTS::AN_INTERBEEFBREED,parInterbeefTraitName);
+//  sMap.outputInterbeef605(CONSTANTS::CH_INTERBEEFBREED,parInterbeefTraitName);
+//  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,parInterbeefTraitName);
+//  sMap.outputInterbeef605(CONSTANTS::SM_INTERBEEFBREED,parInterbeefTraitName);
 
 
   //Time tracking
