@@ -43,9 +43,7 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
 
       (*this)[itTVD->second->indDbIdStr] = sPtr;
 
-      cout<<"mergeAllInputs_sPtr->indStr "<<sPtr->indStr<<endl;
       cout<<"mergeAllInputs_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
-      cout<<"mergeAllInputs_sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
       cout<<"mergeAllInputs_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
 
 
@@ -62,7 +60,7 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
   string itbBreed=convertBreed2InterbullBreed(psBreed);
 
 
-  cout<<"\noutputInterbeef602(): WRITING INTERBEEF DATA-FILE FOR "<<itbBreed<<" AND "<<psTrait<<endl;
+  cout<<"\noutputInterbeef605(): WRITING INTERBEEF DATA-FILE FOR "<<itbBreed<<" AND "<<psTrait<<endl;
   cout<<"*****************************************************************"<< endl;
 
   ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
@@ -71,9 +69,7 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
     sire *sPtr =(*it).second;
 
     if(sPtr->indBreedStr == psBreed){
-      cout<<"before_purgeBloodcomposite_sPtr->indStr "<<sPtr->indStr<<endl;
       cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
-      cout<<"before_purgeBloodcomposite_sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
       cout<<"before_purgeBloodcomposite_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
 
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
@@ -113,14 +109,18 @@ string sireMap::convertBreed2InterbullBreed(string psBreed){
 bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
 
   map<string, blood*>::iterator bit=BreedComposite.find(indDbIdStr);
+  cout<<"bit->second->BloodComposite[parBreedName]: "<<bit->second->BloodComposite[parBreedName]<<endl;
   if(bit != BreedComposite.end()){
-    cout<<"bit->second->BloodComposite[parBreedName]: "<<bit->second->BloodComposite[parBreedName]<<endl;
+    cout<<"found ID in bit "<<bit->first<<endl;
     if(bit->second->BloodComposite[parBreedName] < CONSTANTS::MIN_BLOOD_CONTENT){
+      cout<<"bit->second->BloodComposite[parBreedName] bellow 875: "<<bit->second->BloodComposite[parBreedName]<<endl;
       return false;
     }else{
+      cout<<"bit->second->BloodComposite[parBreedName] above 875: "<<bit->second->BloodComposite[parBreedName]<<endl;
       return true;
     }
   }else{
+    cout<<"not found ID in bit "<<bit->first<<endl;
     return false;
   }
 
