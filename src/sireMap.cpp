@@ -67,6 +67,11 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
     sire *sPtr =(*it).second;
 
     if(sPtr->indBreedStr == psBreed){
+      cout<<"before_purgeBloodcomposite_sPtr->indStr "<<sPtr->indStr<<endl;
+      cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)<<endl;
+      cout<<"before_purgeBloodcomposite_sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
+      cout<<"before_purgeBloodcomposite_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
+
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
 
         cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
