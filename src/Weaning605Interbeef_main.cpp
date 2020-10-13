@@ -5,7 +5,6 @@
 #include <Rcpp.h>
 #include <plog/Log.h>
 #include "parmMap.h"
-//#include "animalMap.h"
 #include "bloodMap.h"
 #include "constant.h"
 #include "sireMap.h"
