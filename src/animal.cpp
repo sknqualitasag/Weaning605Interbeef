@@ -26,7 +26,7 @@ using namespace std;
 animal::animal(string indstr, string traitname, double acc, string psRunningMode){
 
   indStr = indstr;
-  constructorDebug("constructor animal()_Constructor called with indStr", indStr, psRunningMode);
+  constructorDebug("constructor animal()_Constructor called with indStr ", indStr, psRunningMode);
   traitStr = traitname;
   constructorDebug("constructor animal()_Constructor called with traitStr "+traitStr, indStr, psRunningMode);
   accDbl = acc;
@@ -39,16 +39,28 @@ animal::animal(string indstr, string traitname, double acc, string psRunningMode
 animal::animal(string indstr, string indbreedstr, date indbirthdate, string itbidstr, string sexstr, string indactivstr, string indhbstr, string inditbbreedstr, string indDbIdstr, string damDbIdstr, string sireDbIdstr, string psRunningMode){
 
   indStr = indstr;
+  constructorDebug("constructor animal()_Constructor called with indStr ", indStr, psRunningMode);
   indactivStr = indactivstr;
+  constructorDebug("constructor animal()_Constructor called with indactivStr "+indactivStr, indStr, psRunningMode);
   indhbStr = indhbstr;
+  constructorDebug("constructor animal()_Constructor called with indhbStr "+indhbStr, indStr, psRunningMode);
   inditbbreedStr = inditbbreedstr;
+  constructorDebug("constructor animal()_Constructor called with inditbbreedStr "+inditbbreedStr, indStr, psRunningMode);
   indDbIdStr = indDbIdstr;
+  constructorDebug("constructor animal()_Constructor called with indDbIdStr "+indDbIdStr, indStr, psRunningMode);
   damDbIdStr = damDbIdstr;
+  constructorDebug("constructor animal()_Constructor called with damDbIdStr "+damDbIdStr, indStr, psRunningMode);
   sireDbIdStr = sireDbIdstr;
+  constructorDebug("constructor animal()_Constructor called with sireDbIdStr "+sireDbIdStr, indStr, psRunningMode);
   indBreedStr = indbreedstr;
+  constructorDebug("constructor animal()_Constructor called with indBreedStr "+indBreedStr, indStr, psRunningMode);
   sexBirthStr = sexstr;
+  constructorDebug("constructor animal()_Constructor called with sexBirthStr "+sexBirthStr, indStr, psRunningMode);
   itbidStr = itbidstr;
+  constructorDebug("constructor animal()_Constructor called with itbidStr "+itbidStr, indStr, psRunningMode);
   birthdate = indbirthdate;
+  constructorDebug("constructor animal()_Constructor called with birthdate "+birthdate.YearStr+birthdate.MonthStr+birthdate.DayStr, indStr, psRunningMode);
+
 
 }
 

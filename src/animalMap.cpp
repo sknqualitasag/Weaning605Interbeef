@@ -38,68 +38,12 @@ string animalMap::getRunningMode(){
 }
 
 
-// read debug File
-void animalMap::inputDebug(string psRunModeFile){
-
-  // checking whether file psRunModFile exists, if not exit with error 8
-  ifstream datafile(psRunModeFile.c_str());
-  if(!datafile){
-    cout<< "inputDebug(): Cannot open file "<<psRunModeFile<<endl;
-    exit(8);
-  }
-
-  cout<<"\ninputDebug(): Reading file "<<psRunModeFile<<endl;
-  cout<<"*****************************************************************"<< endl;
-
-  // define a string to hold one line of input
-  string inputStr;
-  // counts for linenumbers
-  unsigned lineNumber=0;
-  // loop over all lines of input file, reading one line at the time
-  while (getline(datafile,inputStr)){
-    LOGD <<"Input Line inputStr "<<inputStr;
-    debugTvdIds.push_back(inputStr);
-    lineNumber++;
-  }
-}
-
-
-// output debug File
-void animalMap::outputDebug(string message, string tvdid){
-  string localRunningMode = getRunningMode();
-  if (localRunningMode == CONSTANTS::RUNNING_DEBUG){
-    for (vector<string>::iterator vecit=debugTvdIds.begin(); vecit!=debugTvdIds.end(); vecit++){
-      if(*vecit == tvdid){
-        //here Debug-Output-Logfile
-        LOGD <<"Message "<<message;
-      }
-    }
-  }else if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
-    for(map<string,animal*>::iterator it = this->begin();it != this->end(); it++){
-      animal *aPtr =(*it).second;
-      if(aPtr->indStr == tvdid){
-        //here Develop-Output-Logfile
-        LOGD <<"Message "<<message;
-      }
-    }
-  }
-}
-
-
 // simple debug File
 void animalMap::simpleDebug(string message, string tvdid){
   string localRunningMode = getRunningMode();
   if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
     //here Debug-Output-Logfile
     LOGD <<"Message "<<message<<" of animal "<<tvdid;
-  }
-  else if(localRunningMode == CONSTANTS::RUNNING_DEBUG){
-    for (vector<string>::iterator vecit=debugTvdIds.begin(); vecit!=debugTvdIds.end(); vecit++){
-      if(*vecit == tvdid){
-        //here Debug-Output-Logfile
-        LOGD <<"Message "<<message<<" of animal "<<tvdid;
-      }
-    }
   }
 }
 
@@ -175,7 +119,7 @@ void animalMap::inputData(string dataFile){
         map<string,animal*>::iterator ait = this->find(aPtr->indStr);
         if(ait == this->end()){
           (*this)[aPtr->indStr] = aPtr;
-          outputDebug("inputData()_Animal in animalMap " + aPtr->indStr, indstr);
+          simpleDebug("inputData()_Animal in animalMap " + aPtr->indStr, indstr);
 
         }
 
@@ -339,6 +283,7 @@ void animalMap::readRRTDMPedigree(string pedfileName){
     map<string,animal*>::iterator ait = this->find(indnumstr);
     if(ait == this->end()){
       (*this)[indnumstr] = aPtr;
+      simpleDebug("readRRTDMPedigree()_Input Line indnumstr " + indnumstr, indnumstr);
     }
     else {
       cout<<"Numeric ID of animal "<<indnumstr<<" is already in the map with rrtdm-input. Something is wrong!";

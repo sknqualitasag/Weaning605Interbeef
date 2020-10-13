@@ -25,12 +25,8 @@ public:
 
   void setRunningMode(string psRunningMode);
   string getRunningMode();
-  void inputDebug(string psRunModeFile);
-  void outputDebug(string message, string tvdid);
   string runningMode;
   void simpleDebug(string message, string tvdid);
-  // list of TVD-Ids for which we want to output debugging information
-  vector <string> debugTvdIds;
   void To_out();
 
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
