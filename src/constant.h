@@ -53,6 +53,9 @@ public:
   static const char WWD_INTERBEEFTRAIT[];
   // string corresponding to trait weaning weight maternal interbeef
   static const char WWM_INTERBEEFTRAIT[];
+  //' min blood component of a breed
+  static const unsigned MIN_BLOOD_CONTENT;
+
 
 
 

@@ -47,6 +47,9 @@ const char CONSTANTS::HH_INTERBEEFBREED[] = "HH";
 const char CONSTANTS::WWD_INTERBEEFTRAIT[] = "AWWD";
 // string corresponding to trait weaning weight maternal interbeef
 const char CONSTANTS::WWM_INTERBEEFTRAIT[] = "AWWM";
+//' min blood component of a breed
+const unsigned CONSTANTS::MIN_BLOOD_CONTENT = 875;
+
 
 
 

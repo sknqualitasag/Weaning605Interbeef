@@ -18,6 +18,11 @@ public:
 
   sireMap(void);
   void mergeAllInputs(animalMap &aMap, animalMap &pMap);
+  void outputInterbeef605(string psBreed, string psTrait);
+  string convertBreed2InterbullBreed(string psBreed);
+  bool purgeBloodcomposite(string indDbIdStr, string parBreedName);
+  bloodMap BreedComposite;
+
 
   void setRunningMode(string psRunningMode);
   string getRunningMode();

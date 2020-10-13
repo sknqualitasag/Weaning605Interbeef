@@ -33,8 +33,6 @@ public:
   vector <string> debugTvdIds;
   void To_out();
 
-  bloodMap BreedComposite;
-
   void makeReadableRRTDMPedigree(string ipedfile, string opedfile);
   void readRRTDMPedigree(string pedfileName);
   unsigned maxid=0;//the maximum id found in pedigree

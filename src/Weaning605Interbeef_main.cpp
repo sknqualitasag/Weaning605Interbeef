@@ -51,12 +51,13 @@ int Weaning605Interbeef_main(std::string paramFileName) {
 
   animalMap aMap;
   animalMap pMap;
+  sireMap sMap;
 
   //Read blood composite file
   bloodMap bMap;
   bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
-  aMap.BreedComposite = bMap;
+  sMap.BreedComposite = bMap;
 
   //Sophie: Falls Fehler auftretten oder als Hilfe für die Entwicklung
   if (parRunMode == CONSTANTS::DEBUG){
@@ -80,10 +81,12 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
 
   //Create a sire map
-  sireMap sMap;
   sMap.mergeAllInputs(aMap, pMap);
 
   //Prepare 605 Interbeef file
+  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWD_INTERBEEFTRAIT);
+  sMap.outputInterbeef605(CONSTANTS::LM_INTERBEEFBREED,CONSTANTS::WWM_INTERBEEFTRAIT);
+
 
   //Time tracking
   end = std::chrono::system_clock::now();
