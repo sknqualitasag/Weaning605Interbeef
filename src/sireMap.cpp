@@ -118,20 +118,20 @@ bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
 
 
 // setter for running mode
-void bloodMap::setRunningMode(string psRunningMode){
+void sireMap::setRunningMode(string psRunningMode){
   runningMode = psRunningMode;
 
 }
 
 
 // getter for running mode
-string bloodMap::getRunningMode(){
+string sireMap::getRunningMode(){
   return runningMode;
 }
 
 
 // simple debug File
-void bloodMap::simpleDebug(string message, string tvdid){
+void sireMap::simpleDebug(string message, string tvdid){
   string localRunningMode = getRunningMode();
   if(localRunningMode == CONSTANTS::RUNNING_DEBUGALL){
     //here Develop-Output-Logfile
