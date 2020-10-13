@@ -43,7 +43,11 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
 
       (*this)[itTVD->second->indDbIdStr] = sPtr;
 
-      simpleDebug("mergeAllInputs()_Insert sireMap ", itTVD->second->indDbIdStr);
+      cout<<"mergeAllInputs_sPtr->indStr "<<sPtr->indStr<<endl;
+      cout<<"mergeAllInputs_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
+      cout<<"mergeAllInputs_sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
+      cout<<"mergeAllInputs_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
+
 
 
     }
@@ -68,18 +72,18 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
 
     if(sPtr->indBreedStr == psBreed){
       cout<<"before_purgeBloodcomposite_sPtr->indStr "<<sPtr->indStr<<endl;
-      cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)<<endl;
+      cout<<"before_purgeBloodcomposite_sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
       cout<<"before_purgeBloodcomposite_sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
       cout<<"before_purgeBloodcomposite_sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
 
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
 
         cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
-        cout<<"sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)<<endl;
+        cout<<"sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)<<endl;
         cout<<"sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
 
         datafile605 <<setw(3)<<"605"
-                    <<setw(20)<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)
+                    <<setw(20)<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)
                     <<setw(3)<<sPtr->accDbl*100
                     <<setw(3)<<"00"
                     <<setw(4)<<"CHE";
@@ -110,6 +114,7 @@ bool sireMap::purgeBloodcomposite(string indDbIdStr, string parBreedName){
 
   map<string, blood*>::iterator bit=BreedComposite.find(indDbIdStr);
   if(bit != BreedComposite.end()){
+    cout<<"bit->second->BloodComposite[parBreedName]: "<<bit->second->BloodComposite[parBreedName]<<endl;
     if(bit->second->BloodComposite[parBreedName] < CONSTANTS::MIN_BLOOD_CONTENT){
       return false;
     }else{
