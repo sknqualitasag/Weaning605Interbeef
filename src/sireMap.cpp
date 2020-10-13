@@ -31,6 +31,14 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
   cout<<"\nmergeAllInputs(): mergeAllInputs in sireMap "<<endl;
   cout<<"*****************************************************************"<< endl;
 
+  cout<<"\nTo_out() of aMap"<<endl;
+  aMap.To_out();
+  cout<<"*****************************************************************"<< endl;
+  cout<<"\nTo_out() of pMap"<<endl;
+  pMap.To_out();
+  cout<<"*****************************************************************"<< endl;
+
+
   //pMap ist mit numerischeID Tier.
   for(map<string,animal*>::iterator pit = pMap.begin(); pit != pMap.end();  pit++){
     //aMap ist mit den TVD-ID von Tier aufgebaut.
