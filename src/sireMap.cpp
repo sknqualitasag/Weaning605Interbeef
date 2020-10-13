@@ -68,7 +68,8 @@ void sireMap::outputInterbeef605(string psBreed, string parInterbeefTraitName){
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
 
         datafile605 <<setw(3)<<"605"
-                    <<setw(20)<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(2,16)
+                    <<setw(4)<<sPtr->inditbbreedStr
+                    <<setw(17)<<sPtr->itbidStr.substr(2,16)
                     <<setw(3)<<sPtr->accDbl*100
                     <<setw(3)<<"00"
                     <<setw(4)<<"CHE"<<endl;
