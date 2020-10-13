@@ -53,24 +53,24 @@ int Weaning605Interbeef_main(std::string paramFileName) {
   bloodMap bMap;
 
   //Debugging-File
-  plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt");
+//  plog::init(plog::debug, "DEBUG_605Interbeef_Output.txt");
 
   //Read blood composite file
-  bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+//  bMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   bMap.makeReadableBloodComposite(bloodFile, bloodFileReformattted);
   sMap.BreedComposite = bMap;
 
   //Read data file
-  aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+//  aMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   aMap.inputData(dataFile);
 
   //Read pedigree file
-  pMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+//  pMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   pMap.makeReadableRRTDMPedigree(pedigreeFile,pedigreeFileReformatted);
   pMap.readRRTDMPedigree(pedigreeFileReformatted);
 
   //Create a sire map
-  sMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
+//  sMap.setRunningMode(CONSTANTS::RUNNING_DEBUGALL);
   sMap.mergeAllInputs(aMap, pMap);
 
   //Output 605 Interbeef file
