@@ -6,6 +6,7 @@
 #include <map>
 #include "sire.h"
 #include "animalMap.h"
+#include "bloodMap.h"
 
 using namespace std;
 
