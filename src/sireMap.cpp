@@ -28,7 +28,7 @@ sireMap::sireMap(){}
 
 void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
 
-  cout<<"\nsireMap(): sireMap building "<<endl;
+  cout<<"\nmergeAllInputs(): mergeAllInputs in sireMap "<<endl;
   cout<<"*****************************************************************"<< endl;
 
   //pMap ist mit numerischeID Tier.
@@ -42,6 +42,17 @@ void sireMap::mergeAllInputs(animalMap &aMap, animalMap &pMap){
       sire *sPtr = new sire(itTVD->second->indStr, itTVD->second->traitStr, itTVD->second->accDbl, itTVD->second->indBreedStr, itTVD->second->birthdate, itTVD->second->itbidStr, itTVD->second->sexBirthStr, itTVD->second->inditbbreedStr, itTVD->second->indDbIdStr, itTVD->second->damDbIdStr, itTVD->second->sireDbIdStr);
 
       (*this)[itTVD->second->indDbIdStr] = sPtr;
+
+      cout<<"***"<<endl;
+      cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
+      cout<<"sPtr->traitStr "<<sPtr->traitStr<<endl;
+      cout<<"sPtr->accDbl "<<sPtr->accDbl<<endl;
+      cout<<"sPtr->indBreedStr "<<sPtr->indBreedStr<<endl;
+      cout<<"sPtr->itbidStr "<<sPtr->itbidStr<<endl;
+      cout<<"sPtr->indDbIdStr "<<sPtr->indDbIdStr<<endl;
+      cout<<"sPtr->inditbbreedStr "<<sPtr->inditbbreedStr<<endl;
+      cout<<"sPtr->sexBirthStr "<<sPtr->sexBirthStr<<endl;
+
 
     }
 
@@ -60,13 +71,16 @@ void sireMap::outputInterbeef605(string psBreed, string psTrait){
 
   ofstream datafile605("datafile605_"+itbBreed+"_"+psTrait);
 
-  //https://wiki.interbull.org/public/beef_guidelines#A4.2.2.4_OFCL_file_.28605.29
-
   for(map<string,sire*>::iterator it = this->begin();it != this->end(); it++){
     sire *sPtr =(*it).second;
 
     if(sPtr->indBreedStr == psBreed){
       if(purgeBloodcomposite(sPtr->indDbIdStr, psBreed)){
+
+        cout<<"sPtr->indStr "<<sPtr->indStr<<endl;
+        cout<<"sPtr->sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16) "<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)<<endl;
+        cout<<"sPtr->accDbl*100 "<<sPtr->accDbl*100<<endl;
+
         datafile605 <<setw(3)<<"605"
                     <<setw(20)<<sPtr->inditbbreedStr<<sPtr->itbidStr.substr(3,16)
                     <<setw(3)<<sPtr->accDbl*100
